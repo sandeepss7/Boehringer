@@ -11,6 +11,7 @@
     }
     &__country {
         display: flex;
+        align-items: center;
         img {
             position: absolute;
             left: -40px;

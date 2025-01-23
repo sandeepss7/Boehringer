@@ -4798,7 +4798,7 @@ body {
   // text-align: center;
   span {
     font-weight: 200;
-    font-size: 14px !important;
+    font-size: 18px !important;
     color: #191919;
   }
 }
@@ -5741,7 +5741,7 @@ body {
 .boehringer .bread-crumb {
   padding: 20px 0 34px;
   color: var(--primary-clr);
-  a {
+  a span {
     margin-bottom: 4px;
     display: inline-block;
   }
