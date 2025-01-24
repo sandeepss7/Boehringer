@@ -4793,12 +4793,12 @@ body {
 
 .boehringer .cx-popup-h {
   text-transform: unset;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   // text-align: center;
   span {
     font-weight: 200;
-    font-size: 14px !important;
+    font-size: 16px !important;
     color: #191919;
   }
 }
@@ -4811,7 +4811,7 @@ body {
 
 .boehringer .cx-btn-out {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 0;
   width: 100%;
   align-items: center;
@@ -5479,7 +5479,7 @@ body {
   background-color: var(--secondary-clr) !important;
   border: 1px solid var(--secondary-clr) !important;
   color: #0D0B0C;
-  padding: 6px 24px;
+  padding: 6px 12px;
   text-transform: unset;
   text-align: center;
   border-radius: 6px;
