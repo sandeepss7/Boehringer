@@ -911,6 +911,9 @@
     color: var(--primary-clr);
     text-transform: unset;
     font-weight: 600;
+    span {
+      font-size: 22px;
+    }
   }
 
   .bi-prdctcs {
@@ -1556,6 +1559,17 @@
       }
       .dxeTBTrack_MaterialCompact {
         width: 190px !important;
+      }
+    }
+    .bi-pdp input {
+      font-size: 10px;
+    }
+    .bi-rmb span {
+      font-size: 14px;
+    }
+    .cx-shpingcart__right {
+      .cx-ordrsumry__item {
+        
       }
     }
   }

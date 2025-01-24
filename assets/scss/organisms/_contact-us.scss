@@ -32,3 +32,9 @@
         margin: 10px 0px;
     }
 }
+
+@include tablet {
+  .bi-contact-us {
+    min-height: 50vh;
+  }
+}
