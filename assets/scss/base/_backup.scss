@@ -3671,7 +3671,7 @@
   }
 
   .cx-shpingcart__right {
-    padding-left: 15px;
+    padding-left: 0;
   }
 
   .cx-shpingcart .cx-ordrsumry__head {
@@ -3687,7 +3687,7 @@
   }
 
   .cx-shpingcart .cx-ordrsumry .boldblu {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -5458,7 +5458,7 @@ body {
   color: var(--primary-clr) !important;
   padding: 6px 12px;
   border-radius: 6px;
-  width: auto;
+  width: auto !important;
   text-transform: unset;
   font-weight: 400;
   margin-right: 16px;
