@@ -574,6 +574,29 @@
       }
    }
 
+   .bi-shptbl {
+    
+      table,
+      th,
+      td {
+          padding: 4px 9px;
+          color: #000000;
+          text-align: right;
+          font-size: 11px;
+          font-weight: 600;
+      }
+  
+      table {
+          font-size: 13px;
+          padding: 0;
+          border: 0;
+          margin-bottom: 4px;
+      }
+      th {
+         text-align: left;
+      }
+   }
+
 
    // ipad mini
 
