@@ -37,6 +37,17 @@
       font-weight: bold;
       margin-top: 6px;
       margin-right: 6px;
+      &.fillop {
+         font-size: 11px;
+         border-radius: 4px;
+         border: 1px solid #aeaeae;
+         color: #54565A;
+         text-transform: unset;
+         font-weight: normal;
+      }
+   }
+   .bi-fulfill {
+      margin-bottom: 16px;
    }
    .ListingCol {
       max-width: 33.33% !important;
