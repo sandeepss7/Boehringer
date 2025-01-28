@@ -657,15 +657,18 @@
       margin-top: 16px !important;
      }
      .headerspacer  {
-      height: 110px;
+       height: 110px;
      }
      .sort label {
-      width: 50%;
+       width: 50%;
      }
      .ab-cart {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-}
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+     }
+     .bi-footer {
+         transform: translateY(5px);
+     }
    }
 }
