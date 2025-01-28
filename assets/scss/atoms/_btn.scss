@@ -95,3 +95,9 @@
       font-weight: 600;
     }
   }
+
+@include mobile {
+    .bi-btn {
+        margin-left: 6px;
+    }
+}
