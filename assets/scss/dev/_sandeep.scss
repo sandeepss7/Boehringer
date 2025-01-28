@@ -1268,6 +1268,23 @@
       display: inline-flex;
     }
   }
+  .cx-checkout__terms input[type=checkbox] {
+    -webkit-appearance: none; /* Remove native styles in Safari */
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px; /* Set the size of the checkbox */
+    height: 16px;
+    border: 2px solid var(--primary-clr);
+    border-radius: 4px; /* Optional, for rounded corners */
+    background-color: white; /* Default background color */
+    cursor: pointer;
+}
+
+.cx-checkout__terms input[type=checkbox]:checked {
+    background-color: var(--primary-clr); /* Apply primary color when checked */
+    border-color: var(--primary-clr); /* Optional, match border color */
+}
+
 }
 
 .bi-loginbtn {
@@ -1537,7 +1554,7 @@
       display: inline-flex;
       flex-direction: column-reverse;
       width: 100%;
-      
+
       .dxeOutOfRWarn.dxeOutOfRWarnRight {
         left: 110px !important;
         margin-top: 40px;
