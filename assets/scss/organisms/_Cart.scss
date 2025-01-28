@@ -48,12 +48,12 @@
 .bi-ordrsumry__btn {
   background-color: var(--primary-clr);
   color: #fff;
-  width: 85%;
+  width: 100px;
   display: inline-block;
   text-align: center;
   border: 1px solid var(--primary-clr);
   border-radius: 4px;
-  padding: 10px;
+  padding: 10px 8px;
   margin-top: 26px;
   transition: 0.3s all;
   &.cartbtn {
