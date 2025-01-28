@@ -209,9 +209,9 @@
     font-weight: 400;
     font-size: 18px;
   }
- 
+
   .bi-font {
-    font-family: 'Boehringer Forward Text';
+    font-family: "Boehringer Forward Text";
   }
 
   .bi-freight {
@@ -268,7 +268,7 @@
     width: 100%;
     padding-top: 24px;
   }
-  .bi-pdp {   
+  .bi-pdp {
     .mobile-price {
       padding: 1px 7px 20px;
     }
@@ -308,7 +308,7 @@
   #ctl14_pProfile .dropdown .dropdown-menu {
     top: 50px;
   }
-  
+
   #ctl16_pProfile .dropdown .dropdown-menu {
     top: 50px;
   }
@@ -461,7 +461,7 @@
           position: absolute;
           background: #000;
           left: -12px;
-           width: 5px;
+          width: 5px;
           height: 5px;
           border-radius: 50%;
           font-size: 50px;
@@ -496,7 +496,7 @@
     letter-spacing: 0.3px;
 
     &.active {
-        font-weight: 600;
+      font-weight: 600;
     }
   }
   .vn-filter-check-box label {
@@ -654,9 +654,9 @@
   }
 
   .bi-emptyres {
-    margin-top: 14px;  
+    margin-top: 14px;
     a {
-      font-family: 'Boehringer Forward Text';
+      font-family: "Boehringer Forward Text";
     }
     .bi-btn2 {
       width: 200px;
@@ -1014,7 +1014,7 @@
   .bi-smcontent {
     min-height: 40vh !important;
   }
-   .navbar .dropdown-menu .dropdown-item {
+  .navbar .dropdown-menu .dropdown-item {
     color: var(--primary-clr);
     font-size: 16px !important;
     &:hover {
@@ -1140,14 +1140,13 @@
   .menu-bar {
     position: unset !important;
   }
-  
+
   .bi-filterscroll {
     max-height: 172px;
     min-height: auto;
     overflow-y: auto;
     scroll-behavior: smooth;
     cursor: pointer;
-  
   }
   .bi-filterscroll::-webkit-scrollbar {
     margin-top: 2px;
@@ -1170,40 +1169,40 @@
   }
 
   /* firefox scroll */
-//   .bi-filterscroll {
-//     max-height: 172px;
-//     min-height: auto;
-//     overflow-y: auto;
-//     scroll-behavior: smooth;
-//     cursor: pointer;
-//     scrollbar-width: thin; /* Options: auto, thin, none */
-//     scrollbar-color: var(--primary-clr) ; /* thumb color and track color */
-// }
+  //   .bi-filterscroll {
+  //     max-height: 172px;
+  //     min-height: auto;
+  //     overflow-y: auto;
+  //     scroll-behavior: smooth;
+  //     cursor: pointer;
+  //     scrollbar-width: thin; /* Options: auto, thin, none */
+  //     scrollbar-color: var(--primary-clr) ; /* thumb color and track color */
+  // }
 
   .bi-filterscroll::-moz-scrollbar {
     height: 2px;
     width: 8px; /* Thumb width */
-}
+  }
 
-.bi-filterscroll::-moz-scrollbar-thumb {
+  .bi-filterscroll::-moz-scrollbar-thumb {
     background-color: var(--primary-clr); /* Thumb color */
     border-radius: 20px; /* Rounded corners for the thumb */
-}
+  }
 
-.bi-filterscroll::-moz-scrollbar-thumb:hover {
+  .bi-filterscroll::-moz-scrollbar-thumb:hover {
     background-color: var(--primary-clr); /* Hover color for the thumb */
-}
+  }
 
-.bi-filterscroll::-moz-scrollbar-track {
+  .bi-filterscroll::-moz-scrollbar-track {
     background-color: #ccc; /* Track color */
     border-radius: 10px; /* Rounded corners for the track */
-}
+  }
 
-/* ---------------- */
+  /* ---------------- */
   .bi-ohtable {
     overflow-x: auto;
     table {
-      font-family: 'Boehringer Forward Text';
+      font-family: "Boehringer Forward Text";
     }
   }
   .bi-odpout {
@@ -1241,7 +1240,7 @@
     background-image: none;
   }
   .bi-so_name {
-    .product-name a{
+    .product-name a {
       &:hover {
         color: var(--primary-clr) !important;
       }
@@ -1262,11 +1261,11 @@
   }
   .bi-pdpecop {
     span {
-    color: #54565A;
-    font-size: 14px;
-    margin-top: 6px;
-    margin-bottom: 12px;
-    display: inline-flex;
+      color: #54565a;
+      font-size: 14px;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      display: inline-flex;
     }
   }
 }
@@ -1299,7 +1298,6 @@
     display: flex;
   }
 }
-
 
 /* ********************************************************************************************* */
 /* Media Queries */
@@ -1400,7 +1398,7 @@
       gap: 20px;
     }
     .bi-trackdx {
-      .dxeTBHSys  .dxeTBContentContainerSys {
+      .dxeTBHSys .dxeTBContentContainerSys {
         width: 100% !important;
       }
       .dxeTBTrack_MaterialCompact {
@@ -1415,7 +1413,7 @@
     a {
       padding: 10px 14px;
     }
-  } 
+  }
   .bi-dateout {
     width: 100% !important;
     flex-direction: column;
@@ -1538,6 +1536,12 @@
     .bi-pdpcr {
       display: inline-flex;
       flex-direction: column-reverse;
+      width: 100%;
+      
+      .dxeOutOfRWarn.dxeOutOfRWarnRight {
+        left: 110px !important;
+        margin-top: 40px;
+      }
     }
     .bi-showmyordermob {
       display: block;
@@ -1571,7 +1575,7 @@
       font-size: 10px;
     }
     .bi-trackdx {
-      .dxeTBHSys  .dxeTBContentContainerSys {
+      .dxeTBHSys .dxeTBContentContainerSys {
         width: 100% !important;
       }
       .dxeTBTrack_MaterialCompact {
@@ -1586,7 +1590,6 @@
     }
     .cx-shpingcart__right {
       .cx-ordrsumry__item {
-        
       }
     }
   }

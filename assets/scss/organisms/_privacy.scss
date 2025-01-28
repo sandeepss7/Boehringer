@@ -64,6 +64,7 @@
         position: relative;
         margin-bottom: 2px;
         display: inline-block;
+        line-break: anywhere;
         &::after {
             content: "";
             border-bottom: 2px solid var(--secondary-clr);
@@ -81,8 +82,8 @@
 
     table {
         color: #191919;
-        font-size: 15px;
-        line-height: 21px;
+        font-size: 14px;
+        line-height: 20px;
 
         tr {
             border-bottom: 1px solid #dee2e6;
