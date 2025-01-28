@@ -104,3 +104,15 @@
         }
     }
 }
+@include mobile {
+    .bi-privacy {
+        a {
+            text-decoration: underline !important;
+            text-decoration-color: var(--secondary-clr) !important;
+
+            &::after {
+                border-bottom: 0;
+            }
+        }
+    }
+}
