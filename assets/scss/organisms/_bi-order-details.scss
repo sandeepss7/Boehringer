@@ -209,5 +209,13 @@
             font-size: 16px;
             line-height: 26px;
         }
+        &__bold {
+            width: 69px;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        &__normal {
+            font-size: 12px;
+        }
     }
 }

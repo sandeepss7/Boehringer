@@ -5741,6 +5741,10 @@ body {
 .boehringer .bread-crumb {
   padding: 20px 0 34px;
   color: var(--primary-clr);
+  a {
+    margin-bottom: 3px;
+    display: inline-block;
+  }
   a span {
     margin-bottom: 4px;
     display: inline-block;

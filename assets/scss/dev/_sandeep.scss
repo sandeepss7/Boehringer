@@ -1561,8 +1561,9 @@
       }
     }
     .bi-showmyordermob {
-      display: block;
+      display: flex;
       margin: 20px 0;
+      gap: 12px;
     }
     .bi-showmyorder {
       display: none;
