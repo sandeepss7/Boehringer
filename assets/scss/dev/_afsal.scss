@@ -580,7 +580,7 @@
 
    .bi-ohselect {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       select {
          height: 30px;
       }
@@ -667,9 +667,6 @@
          display: flex;
          flex-direction: column;
          align-items: center;
-     }
-     .bi-footer {
-         transform: translateY(5px);
      }
    }
 }

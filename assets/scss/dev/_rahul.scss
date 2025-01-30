@@ -8,8 +8,11 @@
                 width: 30%;
             }
 
-            &__b, &__c, &__d, &__e {
+            &__b, &__c {
                 width: 17.5%;
+            }
+            &__d {
+                width: 25%;
             }
         }
 
@@ -20,8 +23,11 @@
                 padding-left: 15px;
             }
 
-            &__price, &__quantityouter, &__delete {
+            &__quantityouter {
                 width: 17.5%;
+            }
+            &__price {
+                width: 25%;
             }
         }
 
