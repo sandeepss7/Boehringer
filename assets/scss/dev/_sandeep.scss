@@ -289,7 +289,7 @@
   }
 
   .account-search .dropdown .dropdown-menu {
-    top: 52px;
+    top: 48px;
     left: -28px !important;
     right: 0 !important;
     text-align: center;
@@ -1280,6 +1280,12 @@
     border-color: var(--primary-clr); /* Optional, match border color */
 }
 
+.bi-sbspan {
+  span {
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+}
 }
 
 .bi-loginbtn {
@@ -1480,7 +1486,7 @@
     .mobile-price-wrap table > tbody > tr {
       display: flex;
       justify-content: space-between;
-      width: 92% !important;
+      width: 100% !important;
       flex-direction: row;
       align-items: center;
     }
