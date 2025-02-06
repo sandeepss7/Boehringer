@@ -415,6 +415,10 @@
   .bi-tbl__scroll {
     scroll-behavior: smooth;
     cursor: pointer;
+
+    tbody {
+      border-bottom: 1px solid black;
+    }
   }
 
   .product-details-page h2 {
@@ -1320,6 +1324,9 @@
       color: var(--primary-clr);
     }
   }
+ }
+ .bi-scfont {
+  font-size: 14px !important;
  }
 }
 
