@@ -1286,6 +1286,41 @@
     display: inline-block;
   }
 }
+
+.bi-pdpnote { 
+  padding-top: 12px;
+  color: gray;
+  font-weight: 600;
+  font-size: 12px;
+ }
+.bi-pdpnotelink {
+  color: gray;
+  font-weight: 600;
+  font-size: 12px;
+  a {
+    margin-bottom: 4px;
+    display: inline-block;
+    color: var(--primary-clr);
+    position: relative;
+    &::after {
+      content: "";
+      background-color: var(--secondary-clr);
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      bottom: -2px;
+      left: 0px;
+    }
+    &:hover{
+      &::after{
+        width: 0;
+      }
+    }
+    &:hover {
+      color: var(--primary-clr);
+    }
+  }
+ }
 }
 
 .bi-loginbtn {
