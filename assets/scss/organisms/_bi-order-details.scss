@@ -217,5 +217,16 @@
         &__normal {
             font-size: 12px;
         }
+        &__left {
+            p {
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+        &__right { 
+            span {
+                font-size: 12px;
+            }
+        }
     }
 }
