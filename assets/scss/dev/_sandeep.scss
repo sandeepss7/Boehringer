@@ -220,6 +220,7 @@
     font-size: 13px;
     color: #000;
     font-weight: bold;
+    padding-top: 18px;
   }
 
   .inner-marging {
@@ -328,7 +329,7 @@
   }
 
   .bi-rmb {
-    font-weight: bold;
+    font-weight: 300;
 
     b {
       color: var(--primary-clr);
@@ -1267,6 +1268,10 @@
   .bi-pdplft {
     .label {
       margin-bottom: 10px;
+      span {
+        font-size: 18px;
+        font-weight: 600;
+      }
     }
   }
   .bi-pdpecop {
@@ -1465,6 +1470,13 @@
         width: 110px !important;
       }
     }
+    .bi-pdplft {
+      .label {
+        span {
+          font-size: 16px;
+        }
+      }
+    }
   }
   .headerspacer {
     height: 220px !important;
@@ -1661,5 +1673,13 @@
     padding-left: 0;
     padding-right: 0;
    }
+   .bi-pdplft {
+    .label {
+      span {
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
   }
 }
