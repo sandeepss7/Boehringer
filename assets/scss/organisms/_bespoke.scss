@@ -8,9 +8,22 @@
     padding-bottom: 12%;
   }
 
+  &__txt {
+    font-size: 38px;
+    line-height: 42px;
+    font-weight: 600;
+    padding-top: 60px;
+    color: #000;
+  }
+
   &__img {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 60%;
     width: 33%;
     padding: 0px 24px;
+    background-color: #E0E1F6;
 
     img {
       width: 100%;
@@ -178,7 +191,7 @@
 @include tablet {
   .bi-bespoke {
     &__img {
-      padding: 0px;
+      padding: 0px 16px;
     }
 
     &__cnt {
@@ -209,7 +222,7 @@
 
     &__img {
       width: 90%;
-      padding: 0px;
+      padding: 0px 16px;
     }
 
     &__cnt {
