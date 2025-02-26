@@ -783,7 +783,6 @@
 
   .b-price {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     padding-top: 0px;
 
@@ -804,7 +803,7 @@
   }
 
   .b-price span {
-    font-size: 20px;
+    font-size: 18px;
     color: #000000 !important;
   }
 
@@ -1386,6 +1385,9 @@
     .del span {
       font-size: 8px;
     }
+    .b-price span {
+      font-size: 14px;
+    }
   }
 }
 @include tablet {
@@ -1679,6 +1681,9 @@
         font-weight: 600;
       }
     }
+  }
+  .b-price span {
+    font-size: 15px;
   }
   }
 }
