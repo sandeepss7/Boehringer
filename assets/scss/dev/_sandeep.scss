@@ -576,24 +576,30 @@
     content: "";
   }
 
-  .cx-stock b {
+  .cx-stock b span {
     font-size: 14px;
     color: var(--primary-clr);
     margin-bottom: 14px;
     font-weight: 900;
+    display: inline-flex;
   }
 
   .stock-btn {
     width: auto !important;
     padding: 6px 12px !important;
     overflow: hidden;
+    border: 1px solid #08312a;
+    border-radius: 4px;
+    font-size: 11px;
   }
 
   .cx-stock div .stock-btn.active {
-    border-color: var(--secondary-clr);
+    border: 1px solid var(--secondary-clr);
     position: relative;
     font-weight: 600;
     color: #000000;
+    font-size: 11px;
+    border-radius: 4px;
 
     &::after {
       content: "";
