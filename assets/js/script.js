@@ -593,22 +593,24 @@ document.addEventListener('click', (event) => {
 // table scroll text script starts
 
 document.addEventListener('DOMContentLoaded', function() {
-  const scrollableTable = document.querySelector('.bi-tbl__scroll');
-  const scrollIndicator = document.getElementById('scroll-indicator');
+  const scrollableTables = document.querySelectorAll('.bi-tbl__scroll'); // Select ALL scrollable tables
+  const scrollIndicators = document.querySelectorAll('.scroll-indicator'); // Select ALL indicators
 
-  function checkScroll() {
-      if (scrollableTable.scrollWidth > scrollableTable.clientWidth) {
-          scrollIndicator.classList.add('show-scroll-indicator'); // Add class to show
-      } else {
-          scrollIndicator.classList.remove('show-scroll-indicator'); // Remove class to hide
+  // Assuming a one-to-one correspondence between tables and indicators
+  scrollableTables.forEach((table, index) => {
+      const indicator = scrollIndicators[index]; // Get corresponding indicator
+
+      function checkScroll() {
+          if (table.scrollWidth > table.clientWidth) {
+              indicator.classList.add('show-scroll-indicator');
+          } else {
+              indicator.classList.remove('show-scroll-indicator');
+          }
       }
-  }
 
-  // Initial check when the page loads
-  checkScroll();
-
-  // Optional: Check on window resize as well
-  window.addEventListener('resize', checkScroll);
+      checkScroll();
+      window.addEventListener('resize', checkScroll); // Consider if resize applies to each table individually or window
+  });
 });
 
 // table scroll text script ends
