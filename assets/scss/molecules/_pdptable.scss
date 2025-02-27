@@ -41,4 +41,11 @@
         }
         
     }
+    #scroll-indicator {
+        display: none;
+    }
+    
+    .show-scroll-indicator {
+        display: inline; 
+    }
 }

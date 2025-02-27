@@ -589,3 +589,26 @@ document.addEventListener('click', (event) => {
 });
 
 // dropdown style script ends
+
+// table scroll text script starts
+
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollableTable = document.querySelector('.bi-tbl__scroll');
+  const scrollIndicator = document.getElementById('scroll-indicator');
+
+  function checkScroll() {
+      if (scrollableTable.scrollWidth > scrollableTable.clientWidth) {
+          scrollIndicator.classList.add('show-scroll-indicator'); // Add class to show
+      } else {
+          scrollIndicator.classList.remove('show-scroll-indicator'); // Remove class to hide
+      }
+  }
+
+  // Initial check when the page loads
+  checkScroll();
+
+  // Optional: Check on window resize as well
+  window.addEventListener('resize', checkScroll);
+});
+
+// table scroll text script ends
