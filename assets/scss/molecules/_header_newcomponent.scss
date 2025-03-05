@@ -2,6 +2,9 @@
     background-color: #072B25;
     padding: 12px 6px;
     border-bottom: 1px solid #8C8481;
+    span {
+        margin-left: 16px;
+    }
     &__inner {
         color: #fff;
         display: flex;
