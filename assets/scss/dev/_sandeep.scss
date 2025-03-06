@@ -201,6 +201,25 @@
       justify-content: flex-start;
       align-items: center;
     }
+    #ctl18_divCollection {
+      margin-bottom: 10px;
+    }
+    #ctl18_divAvailablity {
+      margin-bottom: 10px;
+    }
+    #ctl18_divPrice {
+      margin-bottom: 10px;
+    }
+    #ctl18_divMinimumQuantity {
+      margin-top: -20px;
+    }
+    #ctl18_divLeadTime {
+      margin-top: -20px;
+    }
+    #ctl18_divColors {
+      margin-bottom: 18px;
+      margin-top: -12px;
+    }
   }
 
   .cx-sortby {
@@ -330,11 +349,12 @@
 
   .bi-rmb {
     font-weight: 300;
-
+    font-size: 16px;
     b {
       color: var(--primary-clr);
       display: inline-block;
       transform: translateX(4px);
+      margin-top: 4px;
     }
 
     span {
@@ -863,6 +883,7 @@
   .b-price span {
     font-size: 16px;
     color: #000000 !important;
+    font-weight: 600 !important;
   }
 
   .bi-up {
@@ -873,7 +894,7 @@
   .cx-rmb-left {
     color: #000000;
     font-weight: 300;
-    font-size: 17px !important;
+    font-size: 16px !important;
     textarea {
       border: 1px solid #000000;
       border-radius: 4px;
@@ -915,7 +936,8 @@
   .bi-qdhd {
     font-size: 14px;
     color: var(--primary-clr);
-    margin-bottom: 14px;
+    margin-top: 4px;
+    display: inline-block;
     font-weight: 900;
   }
 
