@@ -666,6 +666,10 @@
     width: 212px;
     text-align: right;
     margin-left: 64%;
+
+    input {
+      color: #fff;
+    }
   }
 
   .form-control {
@@ -679,6 +683,7 @@
 
   .cx-searchbar {
     border: 1px solid #fff !important;
+    caret-color: #fff !important; /* Ensures white cursor */
   }
 
   .btn-outline-success:hover {
@@ -1411,6 +1416,26 @@
  .bi-scfont {
   font-size: 14px !important;
  }
+
+ .cx-searchbar:-internal-autofill-selected {
+  background-color: #08312a !important;
+  color: #fff !important;
+}
+.cx-searchbar:-webkit-autofill,
+.cx-searchbar:-webkit-autofill:hover, 
+.cx-searchbar:-webkit-autofill:focus, 
+.cx-searchbar:-webkit-autofill:active {
+    background-color: #08312a !important;
+    -webkit-text-fill-color: #fff !important;  /* Ensures text remains white */
+    color: #fff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #08312a inset !important;
+    box-shadow: 0 0 0px 1000px #08312a inset !important;
+    transition: background-color 5000s ease-in-out 0s; /* Prevents autofill color change */
+}
+.cx-searchbar:focus {
+  -webkit-text-fill-color: #fff !important;
+  color: #fff !important;
+}
 }
 
 .bi-loginbtn {
