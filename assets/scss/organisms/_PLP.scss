@@ -1,31 +1,34 @@
 .boehringer {
-    .bi-wicon {
-        cursor: pointer;
-        #whishicon, #whishicon-red {
-            width: 24px;
-            height: 21px;
-        }
-        #whishicon-red {
-            display: none;
-        }
-        &.active {
-            #whishicon {
-                display: none;
-            }
-            #whishicon-red {
-                display: block;
-            }
-        }
+  .bi-wicon {
+    cursor: pointer;
+    #whishicon,
+    #whishicon-red {
+      width: 24px;
+      height: 21px;
     }
-    .bi-plpnprdct {
-        text-align: center;
-        color: #000;
-        margin-bottom: 4.5rem;
+    #whishicon-red {
+      display: none;
     }
-    .plp-price {
-        p {
-            width: auto;
-            text-align: center;
-        }
+    &.active {
+      #whishicon {
+        display: none;
+      }
+      #whishicon-red {
+        display: block;
+      }
     }
+  }
+  .bi-plpnprdct {
+    text-align: center;
+    color: #000;
+    margin-left: 54px;
+    position: absolute;
+    top: 4px;
+  }
+  .plp-price {
+    p {
+      width: auto;
+      text-align: center;
+    }
+  }
 }

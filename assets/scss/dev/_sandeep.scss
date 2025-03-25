@@ -531,8 +531,6 @@
   .sort select {
     font-weight: 400;
     border: 1px solid #ccc;
-    margin-right: -30px;
-    margin-bottom: 12px;
     width: auto;
   }
 
@@ -1435,6 +1433,15 @@
 .cx-searchbar:focus {
   -webkit-text-fill-color: #fff !important;
   color: #fff !important;
+}
+.fb-prdct-lstng__pagination {
+  margin-bottom: 20px;
+  input {
+    background-color: #F6F5F3;
+  }
+}
+.bi-srchspan {
+  margin-left: 54px;
 }
 }
 
