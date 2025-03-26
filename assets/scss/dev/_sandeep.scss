@@ -1439,6 +1439,29 @@
   input {
     background-color: #F6F5F3;
   }
+  .active {
+    background-color: #4CAF50;
+    color: #4caf50;
+    cursor: not-allowed;
+    border: 1px solid #4CAF50;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+    margin: 2px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+input[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+input[type="submit"]:hover:not(:disabled) {
+    background-color: #ddd;
+}
 }
 .bi-srchspan {
   margin-left: 54px;
