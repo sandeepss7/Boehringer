@@ -40,7 +40,13 @@
 @include mobile {
     .bi-headertop {
         &__inner {
-            font-size: 12px;
+            font-size: 11px;
+        }
+        &__country {
+            img {
+                left: -34px;
+                top: -4px; 
+            }
         }
     }
 }
