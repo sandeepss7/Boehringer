@@ -244,11 +244,21 @@
           display: block;
         }
       }
+      .active {
+         color: var(--secondary-clr);
+      }
+      a {
+         padding: 0 4px;
+      }
       .lndropbtn {
       background-color: #072B25;
       color: #fff;
       font-size: 16px;
       border: none;
+
+      &.active {
+         color: var(--secondary-clr);
+      }
     }
     .lndropdown-content {
       display: none;
