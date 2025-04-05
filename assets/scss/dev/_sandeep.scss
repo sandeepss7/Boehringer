@@ -1483,21 +1483,18 @@ input[type="submit"]:hover:not(:disabled) {
     margin-top: 20px;
   }
   .bi-cartcheck {
-    width: 300px;
+    width: 310px;
     margin-top: 12px;
-
     span {
       font-size: 13px;
-      display: inline-flex
-  ;
+      display: inline-flex;
     }
     .bi-cartreturn {
-      display: inline-flex
-  ;
+      display: inline-block;
       text-decoration: underline;
       font-size: 13px;
       position: relative;
-    color: var(--primary-clr);
+      color: var(--primary-clr);
     &::after {
       content: "";
       background-color: var(--secondary-clr);
@@ -1588,6 +1585,22 @@ input[type="submit"]:hover:not(:disabled) {
     .bi-cartcheck {
       width: 280px;
     }
+    .bi-cartcheck {
+      span {
+        display: inline-block;
+      }
+      input[type=checkbox] {
+        transform: translateY(4px);
+      }
+      .bi-cartreturn {
+        display: block;
+        margin-left: 24px;
+      &::after {
+        width: 30%;
+        left: 0px;
+      }
+      }
+    }
   }
 }
 @include tablet {
@@ -1676,6 +1689,23 @@ input[type="submit"]:hover:not(:disabled) {
         span {
           font-size: 16px;
         }
+      }
+    }
+
+    .bi-cartcheck {
+      span {
+        display: inline-block;
+      }
+      input[type=checkbox] {
+        transform: translateY(4px);
+      }
+      .bi-cartreturn {
+        display: block;
+        margin-left: 24px;
+      &::after {
+        width: 30%;
+        left: 0px;
+      }
       }
     }
   }
