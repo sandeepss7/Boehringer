@@ -1488,6 +1488,7 @@ input[type="submit"]:hover:not(:disabled) {
     span {
       font-size: 13px;
       display: inline-flex;
+      color: #000;
     }
     .bi-cartreturn {
       display: inline-block;
@@ -1501,8 +1502,8 @@ input[type="submit"]:hover:not(:disabled) {
       position: absolute;
       height: 2px;
       bottom: 0;
-      width: 95%;
-      left: 4px;
+      width: 100%;
+      left: 0px;
     }
     &:hover {
       &::after {
@@ -1523,7 +1524,7 @@ input[type="submit"]:hover:not(:disabled) {
     border-radius: 5px;
     display: inline-block;
     cursor: default;
-    margin-top: 12px;
+    margin-top: 26px;
 }
 }
 
@@ -1596,7 +1597,7 @@ input[type="submit"]:hover:not(:disabled) {
         display: block;
         margin-left: 24px;
       &::after {
-        width: 30%;
+        width: 44%;
         left: 0px;
       }
       }
@@ -1703,7 +1704,7 @@ input[type="submit"]:hover:not(:disabled) {
         display: block;
         margin-left: 24px;
       &::after {
-        width: 30%;
+        width: 44%;
         left: 0px;
       }
       }
