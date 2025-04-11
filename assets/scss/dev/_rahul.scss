@@ -669,7 +669,15 @@
 
             th,
             td {
-                width: 60px;
+                min-width: 60px;
+            }
+        }
+    }
+
+    .bi-cart {
+        .bi-shpcarttitle {
+            .bi-shpcarttitle__e {
+                padding-right: 20px;
             }
         }
     }
