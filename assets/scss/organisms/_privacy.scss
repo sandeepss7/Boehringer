@@ -38,6 +38,12 @@
         margin-top: 10px;
         margin-bottom: 15px;
         color: #000000;
+        li {
+            list-style: number;
+            display: list-item;
+            margin-bottom: 5px;
+            color: #000000; 
+        }
     }
 
     // a[href^="mailto:"] {
