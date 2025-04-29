@@ -13,6 +13,16 @@
                 display: inline-block;
                 font-family: "Boehringer Forward Head Md";
             }
+
+          &.ch {
+            font-size: 90px;
+            line-height: 102px;
+
+            span {
+                margin-bottom: 0;
+                margin-left: 6px;
+            }
+            }
         }
 
         .bi-tree__sec-one {
@@ -158,13 +168,28 @@
         }
     }
 }
+@include tablet-pro {
+    .bi-tree {  
+        &__onehead {
 
+            &.ch {
+                font-size: 70px !important;
+                line-height: 85px !important;
+            }
+        }
+        }
+    }
 
 @include tablet {
     .bi-tree {
         &__onehead {
             font-size: 62px !important;
-            line-height: 72px !important;            
+            line-height: 72px !important;   
+            
+            &.ch {
+                font-size: 50px !important;
+                line-height: 62px !important;
+            }
         }    
         &.ethos {
             .bi-tree__one-right {
