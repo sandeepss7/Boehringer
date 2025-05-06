@@ -1422,6 +1422,15 @@
   font-size: 14px !important;
  }
 
+ .bi-agency-select {
+  .modal-show {
+    position: absolute;
+    top: 0;
+    left: 3%;
+    right: 3%;
+}
+}
+
  .cx-searchbar:-internal-autofill-selected {
   background-color: #08312a !important;
   color: #fff !important;
@@ -1919,4 +1928,6 @@ input[type="submit"]:hover:not(:disabled) {
     font-size: 15px;
   }
   }
+
+  
 }
