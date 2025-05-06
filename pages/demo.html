@@ -1,28 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- styles -->
-    <link rel="stylesheet" href="../assets/css/aos.css">
-    <link rel="stylesheet" href="../assets/css/slick.css">
-    <link rel="stylesheet" href="../assets/css/slick-theme.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <!-- styles -->
-    <title>Document</title>
-  </head>
-  <body>
-    <!-- body content start -->
-    <!-- body content end -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary & Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
 
-    <!-- scripts -->
-    <script src="../assets/js/jquery.slim.min.js"></script>
-    <script src="../assets/js/aos.js"></script>
-    <script src="../assets/js/slick.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/script.js"></script>
-    <!-- scripts -->
-  </body>
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .checkboxes {
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        #checkoutBtn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #checkoutBtn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        #checkoutBtn:enabled {
+            background-color: #00e47c;
+            color: #08312a;
+            cursor: pointer;
+        }
+
+        #checkoutBtn:hover:enabled {
+            background-color: #66EFB0;
+        }
+
+        .tax-note {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order summary</h1>
+    
+    <table>
+        <tr>
+            <td>Total items</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td><strong>Subtotal</strong></td>
+            <td>$3.22</td>
+        </tr>
+        <tr>
+            <td><strong>Delivery charge</strong></td>
+            <td>$31.43</td>
+        </tr>
+        <tr>
+            <td><strong>Total cost</strong></td>
+            <td>$34.65</td>
+        </tr>
+    </table>
+
+    <div class="checkboxes">
+        <label>
+            <input type="checkbox" class="bi-cartcheck">
+            I have read and understood the Return policy.
+        </label>
+        <label>
+            <input type="checkbox" class="bi-cartcheck">
+            I have read and understood the Privacy policy.
+        </label>
+    </div>
+
+    <div class="checkout-section">
+        <h2>Checkout</h2>
+        <button id="checkoutBtn" disabled>Proceed to Checkout</button>
+        <p class="tax-note">Please note that VAT/GST/Consumption Tax is not yet included in the price above.</p>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.bi-cartcheck');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        function updateButtonState() {
+            const bothChecked = [...checkboxes].every(checkbox => checkbox.checked);
+            checkoutBtn.disabled = !bothChecked;
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateButtonState);
+        });
+    </script>
+</body>
 </html>

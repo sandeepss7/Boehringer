@@ -697,6 +697,21 @@
        align-items: flex-start;
      }
    }
+   #checkoutBtn:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+      opacity: 0.6;
+  }
+
+  #checkoutBtn:enabled {
+      background-color: #00e47c;
+      color: #08312a;
+      cursor: pointer;
+  }
+
+  #checkoutBtn:hover:enabled {
+      background-color: #66EFB0;
+  }
 }
 
 
