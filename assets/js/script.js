@@ -1,3 +1,34 @@
+// checkout button disabled script
+document.addEventListener('DOMContentLoaded', () => {
+    const checkboxes = document.querySelectorAll('.terms-checkbox input[type="checkbox"]');
+    const checkoutLink = document.getElementById('lblSCProceedTo');
+  
+    function updateLinkState() {
+        const bothChecked = [...checkboxes].every(checkbox => checkbox.checked);
+        
+        if(bothChecked) {
+            checkoutLink.classList.remove('disabled');
+            checkoutLink.classList.add('active');
+            checkoutLink.href = "javascript:__doPostBack('ctl16$lblSCProceedTo','')"; 
+        } else {
+            checkoutLink.classList.add('disabled');
+            checkoutLink.classList.remove('active');
+            checkoutLink.removeAttribute('href');
+        }
+    }
+  
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateLinkState);
+    });
+  
+    // Optional: Prevent default action even if someone tries to click disabled link
+    checkoutLink.addEventListener('click', (e) => {
+        if(checkoutLink.classList.contains('disabled')) {
+            e.preventDefault();
+        }
+    });
+  });
+  
 //PRODUCT HOVER ANIMATION
 //$(".product-box").hover(function() {
 //var el = $(this).find('.hover'),
@@ -614,33 +645,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // table scroll text script ends
-
-// checkout button disabled script
-
-const checkboxes = document.querySelectorAll('.terms-checkbox input[type="checkbox"]');
-const checkoutLink = document.getElementById('lblSCProceedTo');
-
-function updateLinkState() {
-    const bothChecked = [...checkboxes].every(checkbox => checkbox.checked);
-    
-    if(bothChecked) {
-        checkoutLink.classList.remove('disabled');
-        checkoutLink.classList.add('active');
-        checkoutLink.href = "javascript:__doPostBack('ctl16$lblSCProceedTo','')"; 
-    } else {
-        checkoutLink.classList.add('disabled');
-        checkoutLink.classList.remove('active');
-        checkoutLink.removeAttribute('href');
-    }
-}
-
-checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', updateLinkState);
-});
-
-// Optional: Prevent default action even if someone tries to click disabled link
-checkoutLink.addEventListener('click', (e) => {
-    if(checkoutLink.classList.contains('disabled')) {
-        e.preventDefault();
-    }
-});
