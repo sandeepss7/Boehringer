@@ -614,3 +614,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // table scroll text script ends
+
+// checkout button disabled script
+
+const checkboxes = document.querySelectorAll('.bi-cartcheck');
+const checkoutBtn = document.getElementById('checkoutBtn');
+
+function updateButtonState() {
+    const bothChecked = [...checkboxes].every(checkbox => checkbox.checked);
+    checkoutBtn.disabled = !bothChecked;
+}
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updateButtonState);
+});
