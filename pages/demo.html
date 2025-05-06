@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Summary & Checkout</title>
     <style>
+        /* Previous styles remain the same */
         body {
             font-family: Arial, sans-serif;
             max-width: 600px;
@@ -32,28 +33,32 @@
             margin: 10px 0;
         }
 
-        #checkoutBtn {
+        /* Updated styles for anchor tag */
+        #lblSCProceedTo {
             padding: 12px 24px;
             font-size: 16px;
-            border: none;
             border-radius: 4px;
             margin-top: 20px;
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        #checkoutBtn:disabled {
-            background-color: #cccccc;
+        #lblSCProceedTo.disabled {
+            background-color: #cccccc !important;
+            color: #666 !important;
             cursor: not-allowed;
             opacity: 0.6;
+            pointer-events: none;
         }
 
-        #checkoutBtn:enabled {
+        #lblSCProceedTo.active {
             background-color: #00e47c;
-            color: #08312a;
+            color: #08312a !important;
             cursor: pointer;
         }
 
-        #checkoutBtn:hover:enabled {
+        #lblSCProceedTo.active:hover {
             background-color: #66EFB0;
         }
 
@@ -67,6 +72,7 @@
 <body>
     <h1>Order summary</h1>
     
+    <!-- Table remains the same -->
     <table>
         <tr>
             <td>Total items</td>
@@ -86,34 +92,52 @@
         </tr>
     </table>
 
+    <!-- Checkboxes remain the same -->
     <div class="checkboxes">
-        <label>
-            <input type="checkbox" class="bi-cartcheck">
+        <label class="terms-checkbox">
+            <input type="checkbox">
             I have read and understood the Return policy.
         </label>
-        <label>
-            <input type="checkbox" class="bi-cartcheck">
+        <label class="terms-checkbox">
+            <input type="checkbox">
             I have read and understood the Privacy policy.
         </label>
     </div>
 
+    <!-- Updated checkout section with anchor tag -->
     <div class="checkout-section">
         <h2>Checkout</h2>
-        <button id="checkoutBtn" disabled>Proceed to Checkout</button>
+        <a href="#" id="lblSCProceedTo" class="disabled">Proceed to Checkout</a>
         <p class="tax-note">Please note that VAT/GST/Consumption Tax is not yet included in the price above.</p>
     </div>
 
     <script>
-        const checkboxes = document.querySelectorAll('.bi-cartcheck');
-        const checkoutBtn = document.getElementById('checkoutBtn');
+        const checkboxes = document.querySelectorAll('.terms-checkbox input[type="checkbox"]');
+        const checkoutLink = document.getElementById('lblSCProceedTo');
 
-        function updateButtonState() {
+        function updateLinkState() {
             const bothChecked = [...checkboxes].every(checkbox => checkbox.checked);
-            checkoutBtn.disabled = !bothChecked;
+            
+            if(bothChecked) {
+                checkoutLink.classList.remove('disabled');
+                checkoutLink.classList.add('active');
+                checkoutLink.href = "#"; // Replace with actual checkout URL
+            } else {
+                checkoutLink.classList.add('disabled');
+                checkoutLink.classList.remove('active');
+                checkoutLink.removeAttribute('href');
+            }
         }
 
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', updateButtonState);
+            checkbox.addEventListener('change', updateLinkState);
+        });
+
+        // Optional: Prevent default action even if someone tries to click disabled link
+        checkoutLink.addEventListener('click', (e) => {
+            if(checkoutLink.classList.contains('disabled')) {
+                e.preventDefault();
+            }
         });
     </script>
 </body>

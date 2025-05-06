@@ -617,14 +617,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // checkout button disabled script
 
-const checkboxes = document.querySelectorAll('.bi-cartcheck');
-const checkoutBtn = document.getElementById('checkoutBtn');
+const checkboxes = document.querySelectorAll('.terms-checkbox input[type="checkbox"]');
+const checkoutLink = document.getElementById('lblSCProceedTo');
 
-function updateButtonState() {
+function updateLinkState() {
     const bothChecked = [...checkboxes].every(checkbox => checkbox.checked);
-    checkoutBtn.disabled = !bothChecked;
+    
+    if(bothChecked) {
+        checkoutLink.classList.remove('disabled');
+        checkoutLink.classList.add('active');
+        checkoutLink.href = "javascript:__doPostBack('ctl16$lblSCProceedTo','')"; 
+    } else {
+        checkoutLink.classList.add('disabled');
+        checkoutLink.classList.remove('active');
+        checkoutLink.removeAttribute('href');
+    }
 }
 
 checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', updateButtonState);
+    checkbox.addEventListener('change', updateLinkState);
+});
+
+// Optional: Prevent default action even if someone tries to click disabled link
+checkoutLink.addEventListener('click', (e) => {
+    if(checkoutLink.classList.contains('disabled')) {
+        e.preventDefault();
+    }
 });
