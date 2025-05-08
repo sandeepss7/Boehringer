@@ -1,0 +1,117 @@
+.bi-newmodal {
+    padding: 20px;
+    background-color: #fff;
+
+    .bi-heading__sub {
+        color: #08312a;
+    }
+
+    &__selections {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    &__pricedtls {
+        display: flex;
+        align-items: center;
+    }
+
+    &__fieldgrp {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+
+        &:nth-child(1) {
+            width: 45%;
+        }
+
+        &:nth-child(2) {
+            width: 35%;
+        }
+
+        &:nth-child(3) {
+            width: 20%;
+        }
+    }
+
+    &__drpdwn {
+        width: 100%;
+        border: 1px solid #a6a6a6;
+        padding: 8px 16px;
+        color: #666666;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    &__fieldinput {
+        width: 100%;
+        border: 1px solid #a6a6a6;
+        padding: 8px 16px;
+        color: #666666;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    &__fieldlabel {
+        font-size: 16px;
+        color: #08312a;
+        padding-bottom: 8px;
+    }
+
+    &__detailswrap {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 20px 0px;
+    }
+
+    &__pricedtls {
+        display: flex;
+        align-items: center;
+        width: 55%;
+        justify-content: space-between;
+    }
+
+    &__detailsbtn {
+        width: 45%;
+        display: flex;
+        justify-content: flex-end;
+
+        .bi-btn {
+            width: 20%;
+            font-size: 16px;
+        }
+    }
+
+    &__pricelbl {
+        font-size: 16px;
+        color: #000;
+        font-weight: 500;
+    }
+
+    &__pricevalue {
+        font-size: 16px;
+        color: #666666;
+        font-weight: 500;
+        padding-left: 3px;
+    }
+
+    &__table {
+        img {
+            width: 100%;
+        }
+    }
+
+    &__crtbtn {
+        padding-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+
+        .bi-btn {
+            width: 15%;
+            font-size: 16px;
+        }
+    }
+}
