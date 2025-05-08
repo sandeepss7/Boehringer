@@ -630,7 +630,6 @@
       font-weight: 900;
    }
 
-
    // ipad mini
 
    @include tablet {
@@ -720,4 +719,34 @@
 
 .modal-backdrop {
    background-color: rgba(0, 0, 0, 0.6) !important;
+ }
+
+ .bi-bundlemodal {
+   height: 500px;
+   overflow: scroll;
+ }
+
+ .bi-bundlemodal::-webkit-scrollbar {
+   margin-top: 20px;
+   width: 8px;
+   height: 8px;
+   /* Set the height of the scrollbar */
+ }
+ 
+ .bi-bundlemodal::-webkit-scrollbar-thumb {
+   background-color: var(--primary-clr);
+   /* Color of the scrollbar thumb */
+   border-radius: 10px;
+   /* Roundness of the scrollbar */
+ }
+ 
+ .bi-bundlemodal::-webkit-scrollbar-thumb:hover {
+   background-color: var(--primary-clr);
+   /* Darker color when hovering */
+ }
+ 
+ .bi-bundlemodal::-webkit-scrollbar-track {
+   background-color: #f1f1f1;
+   /* Background of the scrollbar track */
+   border-radius: 10px;
  }
