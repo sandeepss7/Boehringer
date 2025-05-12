@@ -9,6 +9,13 @@
         width: 100%;
     }
 
+    &__closebtn {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        cursor: pointer;
+    }
+
     .bi-heading__sub {
         color: #08312a;
     }
