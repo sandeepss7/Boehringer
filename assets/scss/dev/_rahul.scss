@@ -683,4 +683,49 @@
     }
 }
 
+// 07-05-2025
+.bi-tree.ethos.ethos-jap {
+     .bi-tree__onehead {
+        font-size: 67px;
+        line-height: 95px;
+        span {
+            margin-bottom: 12px;
+        }
+    }
+}
 
+@include tablet-pro {
+    .bi-tree.ethos.ethos-jap {
+        .bi-tree__onehead {
+           font-size: 42px;
+           line-height: 62px;
+           span {
+            margin-bottom: 0;
+        }
+       }
+   }
+}
+
+@include tablet {
+    .bi-tree.ethos.ethos-jap {
+        .bi-tree__onehead {
+           font-size: 40px;
+           line-height: 60px;
+           span {
+            margin-bottom: 0;
+        }
+       }
+   }
+}
+
+@include mobile {
+    .bi-tree.ethos.ethos-jap {
+        .bi-tree__onehead {
+           font-size: 43px;
+           line-height: 60px;
+           span {
+            margin-bottom: 0;
+        }
+       }
+   }
+}
