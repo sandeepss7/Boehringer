@@ -5,7 +5,7 @@
 
     &__outer {
         padding: 20px;
-        background-color: #fff;
+        background-color: #f6f5f3;
         width: 100%;
     }
 
@@ -20,34 +20,86 @@
         color: #08312a;
     }
 
-    &__selections {
+    &__selectionswrap {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
         gap: 20px;
     }
 
-    &__pricedtls {
-        display: flex;
-        align-items: center;
+    &__selectionsa {
+        .bi-newmodal__fieldgrp {
+            width: 100%;
+        }
+    }
+
+    &__dtlstable {
+        padding: 30px 0px;
+
+        .bi-tbl__scroll {
+            max-width: 100%;
+        }
+
+        .bi-qdhd {
+            font-size: 16px !important;
+        }
+
+        .bi-shiptxt {
+            font-size: 16px !important;
+        }
+
+        .bi-tbl {
+            th,td {
+                font-size: 14px !important;
+            }
+        }
     }
 
     &__fieldgrp {
         display: flex;
         align-items: flex-start;
         flex-direction: column;
+        width: 100%;
+    }
 
-        &:nth-child(1) {
-            width: 45%;
-        }
+    &__selectionsb {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
 
-        &:nth-child(2) {
-            width: 35%;
-        }
+    &__stockwrap {
+        width: 50%;
+    }
 
-        &:nth-child(3) {
-            width: 20%;
-        }
+    &__deliverywrap {
+        width: 50%;
+    }
+
+    &__stockinfo {
+        padding-bottom: 20px;
+    }
+
+    &__stockstatus {
+        font-size: 16px;
+        color: #08312a;
+    }
+
+    &__stockbal {
+        font-size: 16px;
+        color: #000;
+    }
+
+    &__deliveryspan {
+        font-size: 16px;
+        color: #000;
+        padding-left: 6px;
+    }
+
+    &__deliveryinfo {
+        padding-bottom: 20px;
+        display: flex;
+        align-items: center;
     }
 
     &__drpdwn {
@@ -57,6 +109,7 @@
         color: #666666;
         font-size: 16px;
         border-radius: 5px;
+        background-color: #f6f5f3;
     }
 
     &__fieldinput {
@@ -66,26 +119,13 @@
         color: #666666;
         font-size: 16px;
         border-radius: 5px;
+        background-color: #f6f5f3;
     }
 
     &__fieldlabel {
         font-size: 16px;
         color: #08312a;
         padding-bottom: 8px;
-    }
-
-    &__detailswrap {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        padding: 20px 0px;
-    }
-
-    &__pricedtls {
-        display: flex;
-        align-items: center;
-        width: 55%;
-        justify-content: space-between;
     }
 
     &__detailsbtn {
@@ -99,17 +139,61 @@
         }
     }
 
-    &__pricelbl {
-        font-size: 16px;
-        color: #000;
-        font-weight: 500;
+    &__wrap {
+        width: 100%;
+        display: flex;
+        gap: 50px;
+        margin-bottom: 15px;
     }
 
-    &__pricevalue {
+    &__left {
+        width: 60%;
+    }
+
+    &__right {
+        width: 40%;
+    }
+
+    &__itmdetailscard {
+        width: 100%;
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 5px 20px;
+        margin: 20px 0px;
+    }
+
+    &__itmdetails {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #a6a6a6;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__itmdetailslabel {
         font-size: 16px;
-        color: #666666;
-        font-weight: 500;
-        padding-left: 3px;
+        color: #000;
+        font-weight: 600;
+    }
+
+    &__itmdetailsvalue {
+        color: #08312a;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &__itmdetailsbtn {
+        width: 100%;
+        padding: 15px 0;
+
+         .bi-btn {
+            width: 100%;
+            margin: 0;
+         }
     }
 
     &__table {
@@ -132,36 +216,13 @@
     &__table {
         width: 100%;
     }
+    
 }
 
 @include mobile {
     .bi-newmodal {
 
-        &__selections {
-            flex-direction: column;
-        }
-
-        &__fieldgrp {
-            &:nth-child(1) {
-                width: 100%;
-            }
-    
-            &:nth-child(2) {
-                width: 100%;
-            }
-    
-            &:nth-child(3) {
-                width: 100%;
-            }
-        }
-
-        &__pricelbl {
-            font-size: 14px;
-        }
-    
-        &__pricevalue {
-            font-size: 14px;
-        }
+        
 
         &__fieldinput {
             font-size: 14px;
@@ -183,12 +244,6 @@
                 width: 50%;
                 font-size: 14px;
             }
-        }
-
-        &__pricedtls {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
         }
 
         &__detailswrap {
