@@ -4,8 +4,8 @@
     justify-content: center;
 
     &__outer {
-        padding: 20px;
-        background-color: #f6f5f3;
+        padding: 30px;
+        background-color: #F6F5F3;
         width: 100%;
     }
 
@@ -18,6 +18,7 @@
 
     .bi-heading__sub {
         color: #08312a;
+        margin: 0 0 20px;
     }
 
     &__selectionswrap {
@@ -219,16 +220,81 @@
     
 }
 
+
+@include tablet-pro {
+    .bi-newmodal {
+
+        &__left {
+            width: 55%;
+        }
+
+        &__right {
+            width: 45%;
+        }
+    }
+}
+
+@include tablet {
+    .bi-newmodal {
+        &__outer {
+            padding: 20px;
+        }
+    }
+}
+
 @include mobile {
     .bi-newmodal {
 
-        
+        &__outer {
+            padding: 20px;
+        }
+
+        &__left {
+            width: 100%;
+        }
+
+        &__right {
+            width: 100%;
+        }
+
+        &__wrap {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        &__stockwrap {
+            width: 100%;
+        }
+
+        &__deliverywrap {
+            width: 100%;
+        }
+
+        &__selectionswrap {
+            padding-top: 30px;
+        }
+
+        &__selectionsb {
+            flex-direction: column;
+        }
 
         &__fieldinput {
             font-size: 14px;
         }
     
         &__fieldlabel {
+            font-size: 14px;
+        }
+
+        &__deliveryspan {
+            font-size: 14px;
+        }
+
+        &__stockstatus {
+            font-size: 14px;
+        }
+
+        &__stockbal {
             font-size: 14px;
         }
 
@@ -263,15 +329,25 @@
 
         &__crtbtn {
             justify-content: flex-start;
+            padding: 20px;
 
             .bi-btn {
                 margin-left: 0;
+                width: 100%;
             }
         }
 
         .bi-heading__sub {
-            margin: 15px 0px;
+            margin: 10px 0px 20px;
             font-size: 24px;
+        }
+
+        &__pdtwrap {
+            .ab-cart {
+                &.desk-visible {
+                    display: none !important;
+                }
+            }
         }
     }
 }
