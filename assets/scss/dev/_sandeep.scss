@@ -1537,7 +1537,9 @@ input[type="submit"]:hover:not(:disabled) {
     cursor: default;
     margin-top: 26px;
 }
-
+ .bi-pdpred {
+  color: red !important;
+ }
 }
 
 .bi-loginbtn {
