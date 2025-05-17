@@ -13,7 +13,14 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        cursor: pointer;
+
+        &:hover {
+            svg path,
+            svg rect,
+            svg g {
+                stroke: #08312a;
+            }
+        }
     }
 
     .bi-heading__sub {
