@@ -1540,6 +1540,22 @@ input[type="submit"]:hover:not(:disabled) {
  .bi-pdpred {
   color: red !important;
  }
+
+ .bi-bundle {
+
+   .bi-pdplft {
+    text-align: left;
+   }
+
+   .btn-grey {
+    margin-left: 0;
+   }
+ }
+ .bi-bnddetailsp {
+  float: right;
+  transform: translateY(-30px);
+ }
+    
 }
 
 .bi-loginbtn {
