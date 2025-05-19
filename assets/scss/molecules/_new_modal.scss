@@ -232,6 +232,14 @@
         img {
             width: 100%;
         }
+
+        svg circle {
+            transition: fill 0.3s ease;
+        }
+        
+        svg:hover circle {
+            fill: #ff0000; 
+        }
     }
 
     &__crtbtn {
