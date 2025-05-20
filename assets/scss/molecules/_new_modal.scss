@@ -154,6 +154,11 @@
         font-size: 16px;
         border-radius: 5px;
         background-color: #f6f5f3;
+        cursor: pointer;
+
+        &:disabled {
+            opacity: 0.4;
+        }
     }
 
     &__fieldinput {
@@ -171,6 +176,10 @@
 
         td input {
             background-color: #f6f5f3 !important;
+        }
+
+        &:disabled {
+            opacity: 0.4;
         }
     }
 
@@ -306,6 +315,26 @@
         &__outer {
             padding: 20px;
         }
+
+        &__crtbtn {
+            .bi-btn {
+                width: 25%;
+            }
+        }
+
+        &__proceedbtn {
+            .bi-btn {
+                font-size: 14px;
+            }
+        }
+
+        &__stockstatus {
+            font-size: 14px;
+        }
+
+        &__stockbal {
+            font-size: 14px;
+        }
     }
 }
 
@@ -313,7 +342,7 @@
     .bi-newmodal {
 
         &__outer {
-            padding: 20px;
+            padding: 20px 0px;
         }
 
         &__left {
@@ -415,6 +444,14 @@
                     display: none !important;
                 }
             }
+        }
+
+        &__proceedbtn {
+            width: 30%;
+        }
+
+        &__resetbtn {
+            width: 30%;
         }
     }
 }
