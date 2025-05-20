@@ -39,23 +39,32 @@
             </div>
           <!-- selection drpdowns -->
           <div class="bi-newmodal__selectionswrap">
-            <div class="bi-newmodal__selectionsa">
-              <!-- qntty -->
-              <div class="bi-newmodal__fieldgrp">
-                <label class="bi-newmodal__fieldlabel">Total Quantity</label>
-                <input type="number" class="bi-newmodal__fieldinput" value="500">
+            <div id="ctl18_divmaster" class="bi-newmodal__mainwrap">
+              <div class="bi-newmodal__selectionsa">
+                <!-- qntty -->
+                <div class="bi-newmodal__fieldgrp">
+                  <label class="bi-newmodal__fieldlabel">Total Quantity</label>
+                  <input type="number" class="bi-newmodal__fieldinput" value="500">
+                </div>
+                <!-- shipment -->
+                <div class="bi-newmodal__fieldgrp">
+                  <label class="bi-newmodal__fieldlabel">Shipment Mode</label>
+                  <select class="bi-newmodal__drpdwn">
+                    <option>Air</option>
+                  </select>
+                </div>
               </div>
-              <!-- shipment -->
-              <div class="bi-newmodal__fieldgrp">
-                <label class="bi-newmodal__fieldlabel">Shipment Mode</label>
-                <select class="bi-newmodal__drpdwn">
-                  <option>Air</option>
-                </select>
+              <!-- btn-wrap -->
+              <div class="bi-newmodal__btnwrapa">
+                <!-- proceed-btn -->
+                <div class="bi-newmodal__proceedbtn">
+                  <a href="#" class="bi-btn">Proceed</a>
+                </div>
+                <!-- reset btn -->
+                <div class="bi-newmodal__resetbtn">
+                  <a href="#" class="bi-btn">Reset</a>
+                </div>
               </div>
-            </div>
-            <!-- proceed-btn -->
-             <div class="bi-newmodal__proceedbtn">
-              <a href="#" class="bi-btn">Proceed</a>
             </div>
             <div class="bi-newmodal__fieldgrp">
                 <label class="bi-newmodal__fieldlabel">Select varient</label>
@@ -222,6 +231,127 @@
     <script src="../assets/js/slick.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.querySelector('.bi-newmodal');
+      if (!modal) return;
+      
+      const selectionsA = modal.querySelector('.bi-newmodal__selectionsa');
+      const proceedBtn = modal.querySelector('.bi-newmodal__proceedbtn .bi-btn');
+      const resetBtn = modal.querySelector('.bi-newmodal__resetbtn .bi-btn');
+      const quantityInput = selectionsA?.querySelector('input[type="number"]');
+      const shipmentSelect = selectionsA?.querySelector('select');
+      
+      const allInputs = modal.querySelectorAll('input, select');
+      const allButtons = modal.querySelectorAll('.bi-btn');
+      
+      function setInitialState() {
+          if (resetBtn) {
+              resetBtn.closest('.bi-newmodal__resetbtn').style.display = 'none';
+          }
+          
+          if (proceedBtn) {
+              proceedBtn.classList.add('disabled');
+              proceedBtn.style.opacity = '0.5';
+              proceedBtn.style.pointerEvents = 'none';
+          }
+          
+          allInputs.forEach(input => {
+              if (!selectionsA || !selectionsA.contains(input)) {
+                  input.disabled = true;
+              }
+          });
+          
+          allButtons.forEach(button => {
+              if (button !== proceedBtn) {
+                  button.classList.add('disabled');
+                  button.style.opacity = '0.5';
+                  button.style.pointerEvents = 'none';
+              }
+          });
+          
+          if (selectionsA) {
+              const selectionsAInputs = selectionsA.querySelectorAll('input, select');
+              selectionsAInputs.forEach(input => {
+                  input.disabled = false;
+              });
+          }
+          
+          checkFields();
+      }
+      
+      function setProceedState() {
+          if (resetBtn) {
+              resetBtn.closest('.bi-newmodal__resetbtn').style.display = 'block';
+          }
+          
+          if (proceedBtn) {
+              proceedBtn.classList.add('disabled');
+              proceedBtn.style.opacity = '0.5';
+              proceedBtn.style.pointerEvents = 'none';
+          }
+          
+          if (resetBtn) {
+              resetBtn.classList.remove('disabled');
+              resetBtn.style.opacity = '1';
+              resetBtn.style.pointerEvents = 'auto';
+          }
+          
+          allInputs.forEach(input => {
+              input.disabled = false;
+          });
+          
+          allButtons.forEach(button => {
+              if (button !== proceedBtn) {
+                  button.classList.remove('disabled');
+                  button.style.opacity = '1';
+                  button.style.pointerEvents = 'auto';
+              }
+          });
+      }
+      
+      function checkFields() {
+          if (quantityInput && shipmentSelect && proceedBtn) {
+              const hasQuantity = quantityInput.value && parseInt(quantityInput.value) > 0;
+              const hasShipment = shipmentSelect.value;
+              
+              if (hasQuantity && hasShipment) {
+                  proceedBtn.classList.remove('disabled');
+                  proceedBtn.style.opacity = '1';
+                  proceedBtn.style.pointerEvents = 'auto';
+              } else {
+                  proceedBtn.classList.add('disabled');
+                  proceedBtn.style.opacity = '0.5';
+                  proceedBtn.style.pointerEvents = 'none';
+              }
+          }
+      }
+      
+      if (quantityInput) {
+          quantityInput.addEventListener('input', checkFields);
+      }
+      
+      if (shipmentSelect) {
+          shipmentSelect.addEventListener('change', checkFields);
+      }
+      
+      if (proceedBtn) {
+          proceedBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              setProceedState();
+          });
+      }
+      
+      if (resetBtn) {
+          resetBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              setInitialState();
+          });
+      }
+      
+      setInitialState();
+  });
+    </script> -->
     <!-- scripts -->
   </body>
 </html>
