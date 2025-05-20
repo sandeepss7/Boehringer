@@ -1,33 +1,73 @@
 // script for the pop-up page "bi-newmodal"
     document.addEventListener('DOMContentLoaded', function() {
+    // We'll add IDs to our code to make it more robust
+    // To make this work, you'll need to add these IDs to your HTML elements
+    
+    // Get modal element - use ID when possible
+    // Example: <div class="bi-newmodal" id="productModal">
     const modal = document.querySelector('.bi-newmodal');
     if (!modal) return;
     
-    const selectionsA = modal.querySelector('.bi-newmodal__selectionsa');
-    const proceedBtn = modal.querySelector('.bi-newmodal__proceedbtn .bi-btn');
-    const resetBtn = modal.querySelector('.bi-newmodal__resetbtn .bi-btn');
+    // Assign an ID to the modal if it doesn't have one
+    if (!modal.id) modal.id = 'productModal';
     
+    // Define key element IDs - these should be added to your HTML
+    const SELECTIONS_A_ID = 'selectionsA'; // Add this ID to your bi-newmodal__selectionsa div
+    const PROCEED_BTN_ID = 'proceedBtn'; // Add this ID to your proceed button
+    const RESET_BTN_ID = 'resetBtn'; // Add this ID to your reset button
+    
+    // Get key elements using IDs when available, fallback to classes
+    const selectionsA = document.getElementById(SELECTIONS_A_ID) || modal.querySelector('.bi-newmodal__selectionsa');
+    const proceedBtn = document.getElementById(PROCEED_BTN_ID) || modal.querySelector('.bi-newmodal__proceedbtn .bi-btn');
+    const resetBtn = document.getElementById(RESET_BTN_ID) || modal.querySelector('.bi-newmodal__resetbtn .bi-btn');
+    
+    // Get all inputs, selects, and buttons that need to be managed
     const allInputs = modal.querySelectorAll('input, select');
     const allButtons = modal.querySelectorAll('.bi-btn');
     
+    // Track modal state
+    let isProceedClicked = false;
+    
+    // Function to set the initial state
     function setInitialState() {
+        // Reset state tracking
+        isProceedClicked = false;
+        
+        // Hide Reset button
         if (resetBtn) {
-            resetBtn.closest('.bi-newmodal__resetbtn').style.display = 'none';
+            const resetBtnContainer = resetBtn.closest('.bi-newmodal__resetbtn');
+            if (resetBtnContainer) {
+                resetBtnContainer.style.display = 'none';
+            }
         }
         
+        // Make Proceed button clickable by default
         if (proceedBtn) {
             proceedBtn.classList.remove('disabled');
             proceedBtn.style.opacity = '1';
             proceedBtn.style.pointerEvents = 'auto';
         }
         
+        // Disable all inputs and selects outside of selectionsA
         allInputs.forEach(input => {
+            // Give inputs and selects IDs for better targeting
+            if (!input.id) {
+                // Create unique IDs based on input type and position
+                input.id = input.tagName.toLowerCase() + '_' + Math.random().toString(36).substr(2, 9);
+            }
+            
             if (!selectionsA || !selectionsA.contains(input)) {
                 input.disabled = true;
             }
         });
         
+        // Disable all buttons except Proceed
         allButtons.forEach(button => {
+            // Give buttons IDs for better targeting
+            if (!button.id) {
+                button.id = 'btn_' + Math.random().toString(36).substr(2, 9);
+            }
+            
             if (button !== proceedBtn) {
                 button.classList.add('disabled');
                 button.style.opacity = '0.5';
@@ -35,6 +75,7 @@
             }
         });
         
+        // Enable fields inside selectionsA
         if (selectionsA) {
             const selectionsAInputs = selectionsA.querySelectorAll('input, select');
             selectionsAInputs.forEach(input => {
@@ -43,23 +84,34 @@
         }
     }
     
+    // Function to set the state after Proceed is clicked
     function setProceedState() {
+        // Update state tracking
+        isProceedClicked = true;
+        
+        // Show Reset button
         if (resetBtn) {
-            resetBtn.closest('.bi-newmodal__resetbtn').style.display = 'block';
+            const resetBtnContainer = resetBtn.closest('.bi-newmodal__resetbtn');
+            if (resetBtnContainer) {
+                resetBtnContainer.style.display = 'block';
+            }
         }
         
+        // Disable Proceed button
         if (proceedBtn) {
             proceedBtn.classList.add('disabled');
             proceedBtn.style.opacity = '0.5';
             proceedBtn.style.pointerEvents = 'none';
         }
         
+        // Enable Reset button
         if (resetBtn) {
             resetBtn.classList.remove('disabled');
             resetBtn.style.opacity = '1';
             resetBtn.style.pointerEvents = 'auto';
         }
         
+        // Enable all other fields and buttons
         allInputs.forEach(input => {
             input.disabled = false;
         });
@@ -73,6 +125,21 @@
         });
     }
     
+    // Create a function to keep inputs enabled
+    function keepInputsEnabled(e) {
+        if (isProceedClicked && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT')) {
+            // Ensure the input remains enabled
+            setTimeout(() => {
+                e.target.disabled = false;
+            }, 0);
+        }
+    }
+    
+    // Prevent inputs from being disabled after "Proceed" is clicked
+    modal.addEventListener('change', keepInputsEnabled);
+    modal.addEventListener('input', keepInputsEnabled);
+    
+    // Event listener for Proceed button
     if (proceedBtn) {
         proceedBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -80,6 +147,7 @@
         });
     }
     
+    // Event listener for Reset button
     if (resetBtn) {
         resetBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -87,6 +155,7 @@
         });
     }
     
+    // Initialize to initial state when page loads
     setInitialState();
 });
   // script ends for the pop-up page "bi-newmodal"
