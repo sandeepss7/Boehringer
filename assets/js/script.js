@@ -4,22 +4,22 @@
     // To make this work, you'll need to add these IDs to your HTML elements
     
     // Get modal element - use ID when possible
-    // Example: <div class="bi-newmodal" id="productModal">
+    // Example: <div class="bi-newmodal" id="ctl18_divVar">
     const modal = document.querySelector('.bi-newmodal');
     if (!modal) return;
     
     // Assign an ID to the modal if it doesn't have one
-    if (!modal.id) modal.id = 'productModal';
+    if (!modal.id) modal.id = 'ctl18_divVar';
     
     // Define key element IDs - these should be added to your HTML
-    const SELECTIONS_A_ID = 'selectionsA'; // Add this ID to your bi-newmodal__selectionsa div
-    const PROCEED_BTN_ID = 'proceedBtn'; // Add this ID to your proceed button
-    const RESET_BTN_ID = 'resetBtn'; // Add this ID to your reset button
+    const SELECTIONS_A_ID = 'ctl18_selectionsA'; // Add this ID to your bi-newmodal__selectionsa div
+    const PROCEED_BTN_ID = 'lnkprocedd'; // Add this ID to your proceed button
+    const RESET_BTN_ID = 'lnkreset'; // Add this ID to your reset button
     
     // Get key elements using IDs when available, fallback to classes
-    const selectionsA = document.getElementById(SELECTIONS_A_ID) || modal.querySelector('.bi-newmodal__selectionsa');
-    const proceedBtn = document.getElementById(PROCEED_BTN_ID) || modal.querySelector('.bi-newmodal__proceedbtn .bi-btn');
-    const resetBtn = document.getElementById(RESET_BTN_ID) || modal.querySelector('.bi-newmodal__resetbtn .bi-btn');
+    const ctl18_selectionsA = document.getElementById(SELECTIONS_A_ID) || modal.querySelector('.bi-newmodal__selectionsa');
+    const lnkprocedd = document.getElementById(PROCEED_BTN_ID) || modal.querySelector('.bi-newmodal__proceedbtn .bi-btn');
+    const lnkreset = document.getElementById(RESET_BTN_ID) || modal.querySelector('.bi-newmodal__resetbtn .bi-btn');
     
     // Get all inputs, selects, and buttons that need to be managed
     const allInputs = modal.querySelectorAll('input, select');
@@ -34,21 +34,21 @@
         isProceedClicked = false;
         
         // Hide Reset button
-        if (resetBtn) {
-            const resetBtnContainer = resetBtn.closest('.bi-newmodal__resetbtn');
-            if (resetBtnContainer) {
-                resetBtnContainer.style.display = 'none';
+        if (lnkreset) {
+            const lnkresetContainer = lnkreset.closest('.bi-newmodal__resetbtn');
+            if (lnkresetContainer) {
+                lnkresetContainer.style.display = 'none';
             }
         }
         
         // Make Proceed button clickable by default
-        if (proceedBtn) {
-            proceedBtn.classList.remove('disabled');
-            proceedBtn.style.opacity = '1';
-            proceedBtn.style.pointerEvents = 'auto';
+        if (lnkprocedd) {
+            lnkprocedd.classList.remove('disabled');
+            lnkprocedd.style.opacity = '1';
+            lnkprocedd.style.pointerEvents = 'auto';
         }
         
-        // Disable all inputs and selects outside of selectionsA
+        // Disable all inputs and selects outside of ctl18_selectionsA
         allInputs.forEach(input => {
             // Give inputs and selects IDs for better targeting
             if (!input.id) {
@@ -56,7 +56,7 @@
                 input.id = input.tagName.toLowerCase() + '_' + Math.random().toString(36).substr(2, 9);
             }
             
-            if (!selectionsA || !selectionsA.contains(input)) {
+            if (!ctl18_selectionsA || !ctl18_selectionsA.contains(input)) {
                 input.disabled = true;
             }
         });
@@ -68,17 +68,17 @@
                 button.id = 'btn_' + Math.random().toString(36).substr(2, 9);
             }
             
-            if (button !== proceedBtn) {
+            if (button !== lnkprocedd) {
                 button.classList.add('disabled');
                 button.style.opacity = '0.5';
                 button.style.pointerEvents = 'none';
             }
         });
         
-        // Enable fields inside selectionsA
-        if (selectionsA) {
-            const selectionsAInputs = selectionsA.querySelectorAll('input, select');
-            selectionsAInputs.forEach(input => {
+        // Enable fields inside ctl18_selectionsA
+        if (ctl18_selectionsA) {
+            const ctl18_selectionsAInputs = ctl18_selectionsA.querySelectorAll('input, select');
+            ctl18_selectionsAInputs.forEach(input => {
                 input.disabled = false;
             });
         }
@@ -90,25 +90,25 @@
         isProceedClicked = true;
         
         // Show Reset button
-        if (resetBtn) {
-            const resetBtnContainer = resetBtn.closest('.bi-newmodal__resetbtn');
-            if (resetBtnContainer) {
-                resetBtnContainer.style.display = 'block';
+        if (lnkreset) {
+            const lnkresetContainer = lnkreset.closest('.bi-newmodal__resetbtn');
+            if (lnkresetContainer) {
+                lnkresetContainer.style.display = 'block';
             }
         }
         
         // Disable Proceed button
-        if (proceedBtn) {
-            proceedBtn.classList.add('disabled');
-            proceedBtn.style.opacity = '0.5';
-            proceedBtn.style.pointerEvents = 'none';
+        if (lnkprocedd) {
+            lnkprocedd.classList.add('disabled');
+            lnkprocedd.style.opacity = '0.5';
+            lnkprocedd.style.pointerEvents = 'none';
         }
         
         // Enable Reset button
-        if (resetBtn) {
-            resetBtn.classList.remove('disabled');
-            resetBtn.style.opacity = '1';
-            resetBtn.style.pointerEvents = 'auto';
+        if (lnkreset) {
+            lnkreset.classList.remove('disabled');
+            lnkreset.style.opacity = '1';
+            lnkreset.style.pointerEvents = 'auto';
         }
         
         // Enable all other fields and buttons
@@ -117,7 +117,7 @@
         });
         
         allButtons.forEach(button => {
-            if (button !== proceedBtn) {
+            if (button !== lnkprocedd) {
                 button.classList.remove('disabled');
                 button.style.opacity = '1';
                 button.style.pointerEvents = 'auto';
@@ -140,16 +140,16 @@
     modal.addEventListener('input', keepInputsEnabled);
     
     // Event listener for Proceed button
-    if (proceedBtn) {
-        proceedBtn.addEventListener('click', function(e) {
+    if (lnkprocedd) {
+        lnkprocedd.addEventListener('click', function(e) {
             e.preventDefault();
             setProceedState();
         });
     }
     
     // Event listener for Reset button
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function(e) {
+    if (lnkreset) {
+        lnkreset.addEventListener('click', function(e) {
             e.preventDefault();
             setInitialState();
         });
