@@ -182,7 +182,7 @@
             background-color: #f6f5f3 !important;
         }
 
-        input:disabled {
+        &:disabled {
             opacity: 0.4;
         }
     }
