@@ -200,9 +200,17 @@ document.addEventListener('DOMContentLoaded', function() {
             resetButton.parentElement.style.display = 'none';
         }
         
-        // Clear initial fields
+        // Save the dropdown selection in bi-newmodal__selectionsa
+        const dropdownInSelectionsA = selectionsContainer ? 
+            selectionsContainer.querySelector('.bi-newmodal__drpdwn') : null;
+        const savedDropdownValue = dropdownInSelectionsA ? dropdownInSelectionsA.value : null;
+        
+        // Clear initial fields except for the dropdown in bi-newmodal__selectionsa
         initialInputFields.forEach(field => {
-            field.value = '';
+            // Skip the dropdown in bi-newmodal__selectionsa
+            if (field !== dropdownInSelectionsA) {
+                field.value = '';
+            }
         });
         
         // Disable all other fields
@@ -218,6 +226,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset proceed button state
         if (proceedButton) {
             disableElement(proceedButton);
+        }
+        
+        // Restore the dropdown value
+        if (dropdownInSelectionsA && savedDropdownValue) {
+            dropdownInSelectionsA.value = savedDropdownValue;
         }
         
         // Clear session storage state
