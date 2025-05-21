@@ -744,3 +744,27 @@
     }
 }
 
+// 21-05-25
+// https://uat.collection.boehringer-ingelheim.com/igc/en/BundleDetails/top
+// bundledetails-page
+
+.bi-bndladdvariant {
+    background-color: #F8F9FA;
+
+     .bi-bndlfieldwrap {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 25px;
+
+        .bi-newmodal__fieldgrp {
+            width: 50%;
+        }
+     }
+
+     .bi-newmodal__itmdetailsbtn .bi-btn {
+        width: 20%;
+        margin: 15px 0px;
+    }
+}
+
