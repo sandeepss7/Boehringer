@@ -1,162 +1,242 @@
 // script for the pop-up page "bi-newmodal"
-    document.addEventListener('DOMContentLoaded', function() {
-    // We'll add IDs to our code to make it more robust
-    // To make this work, you'll need to add these IDs to your HTML elements
+// Product Modal Functionality with ID Selectors
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the modal container by ID
+    const modalContainer = document.getElementById('ctl18_divVar');
     
-    // Get modal element - use ID when possible
-    // Example: <div class="bi-newmodal" id="ctl18_divVar">
-    const modal = document.querySelector('.bi-newmodal');
-    if (!modal) return;
+    // Get the selections area by ID
+    const selectionsA = document.getElementById('ctl18_selectionsA');
     
-    // Assign an ID to the modal if it doesn't have one
-    if (!modal.id) modal.id = 'ctl18_divVar';
+    // Get the main wrapper by ID
+    const mainWrapper = document.getElementById('ctl18_divmaster');
     
-    // Define key element IDs - these should be added to your HTML
-    const SELECTIONS_A_ID = 'ctl18_selectionsA'; // Add this ID to your bi-newmodal__selectionsa div
-    const PROCEED_BTN_ID = 'lnkprocedd'; // Add this ID to your proceed button
-    const RESET_BTN_ID = 'lnkreset'; // Add this ID to your reset button
+    // Get the "Proceed" button
+    const proceedBtn = document.getElementById('lnkprocedd');
     
-    // Get key elements using IDs when available, fallback to classes
-    const ctl18_selectionsA = document.getElementById(SELECTIONS_A_ID) || modal.querySelector('.bi-newmodal__selectionsa');
-    const lnkprocedd = document.getElementById(PROCEED_BTN_ID) || modal.querySelector('.bi-newmodal__proceedbtn .bi-btn');
-    const lnkreset = document.getElementById(RESET_BTN_ID) || modal.querySelector('.bi-newmodal__resetbtn .bi-btn');
+    // Get the "Reset" button
+    const resetBtn = document.getElementById('lnkreset');
     
-    // Get all inputs, selects, and buttons that need to be managed
-    const allInputs = modal.querySelectorAll('input, select');
-    const allButtons = modal.querySelectorAll('.bi-btn');
+    // Get inputs inside selectionsA
+    const selectionInputs = selectionsA.querySelectorAll('.bi-newmodal__fieldinput, .bi-newmodal__drpdwn');
     
-    // Track modal state
-    let isProceedClicked = false;
+    // Get all other inputs, buttons, and selects on the page (excluding those in selectionsA)
+    const allOtherFields = getOtherFields(selectionsA);
+    const allOtherButtons = getOtherButtons(proceedBtn, resetBtn);
     
-    // Function to set the initial state
-    function setInitialState() {
-        // Reset state tracking
-        isProceedClicked = false;
+    /**
+     * Get all input fields that are not in the selectionsA div
+     * @param {HTMLElement} selectionsA - The selectionsA div element
+     * @returns {NodeList} - All other input fields
+     */
+    function getOtherFields(selectionsA) {
+        // Get all inputs, selects on the page
+        const allFields = modalContainer.querySelectorAll('.bi-newmodal__fieldinput, .bi-newmodal__drpdwn');
         
+        // Filter out the ones in selectionsA
+        return Array.from(allFields).filter(field => {
+            return !selectionsA.contains(field);
+        });
+    }
+    
+    /**
+     * Get all buttons that are not the Proceed or Reset button
+     * @param {HTMLElement} proceedBtn - The Proceed button
+     * @param {HTMLElement} resetBtn - The Reset button
+     * @returns {NodeList} - All other buttons
+     */
+    function getOtherButtons(proceedBtn, resetBtn) {
+        // Get all buttons on the page
+        const allButtons = modalContainer.querySelectorAll('.bi-btn');
+        
+        // Filter out proceedBtn and resetBtn
+        return Array.from(allButtons).filter(button => {
+            return button !== proceedBtn && button !== resetBtn;
+        });
+    }
+    
+    /**
+     * Disable all elements in a collection
+     * @param {Array|NodeList} elements - The elements to disable
+     */
+    function disableElements(elements) {
+        elements.forEach(element => {
+            element.disabled = true;
+            if (element.tagName.toLowerCase() === 'a') {
+                element.classList.add('disabled');
+                element.setAttribute('tabindex', '-1');
+                
+                // Store original onclick
+                if (element.onclick) {
+                    element.setAttribute('data-original-onclick', element.onclick.toString());
+                    element.onclick = null;
+                }
+            }
+        });
+    }
+    
+    /**
+     * Enable all elements in a collection
+     * @param {Array|NodeList} elements - The elements to enable
+     */
+    function enableElements(elements) {
+        elements.forEach(element => {
+            element.disabled = false;
+            if (element.tagName.toLowerCase() === 'a') {
+                element.classList.remove('disabled');
+                element.removeAttribute('tabindex');
+                
+                // Restore original onclick if it exists
+                const originalOnclick = element.getAttribute('data-original-onclick');
+                if (originalOnclick) {
+                    // This is a simplified approach - might need improvement for complex onclick handlers
+                    element.onclick = new Function(`return ${originalOnclick}`)();
+                }
+            }
+        });
+    }
+    
+    /**
+     * Check if all required fields in a container have values
+     * @param {HTMLElement} container - The container element
+     * @returns {boolean} - Whether all required fields have values
+     */
+    function areAllFieldsFilled(container) {
+        let allFilled = true;
+        const requiredFields = container.querySelectorAll('.bi-newmodal__fieldinput, .bi-newmodal__drpdwn');
+        
+        requiredFields.forEach(field => {
+            if (!field.value || field.value.trim() === '') {
+                allFilled = false;
+            }
+        });
+        
+        return allFilled;
+    }
+    
+    /**
+     * Set up the initial state
+     */
+    function setupInitialState() {
         // Hide Reset button
-        if (lnkreset) {
-            const lnkresetContainer = lnkreset.closest('.bi-newmodal__resetbtn');
-            if (lnkresetContainer) {
-                lnkresetContainer.style.display = 'none';
-            }
-        }
+        resetBtn.style.display = 'none';
         
-        // Make Proceed button clickable by default
-        if (lnkprocedd) {
-            lnkprocedd.classList.remove('disabled');
-            lnkprocedd.style.opacity = '1';
-            lnkprocedd.style.pointerEvents = 'auto';
-        }
+        // Disable Proceed button initially
+        disableElement(proceedBtn);
         
-        // Disable all inputs and selects outside of ctl18_selectionsA
-        allInputs.forEach(input => {
-            // Give inputs and selects IDs for better targeting
-            if (!input.id) {
-                // Create unique IDs based on input type and position
-                input.id = input.tagName.toLowerCase() + '_' + Math.random().toString(36).substr(2, 9);
-            }
-            
-            if (!ctl18_selectionsA || !ctl18_selectionsA.contains(input)) {
-                input.disabled = true;
-            }
+        // Disable all other fields and buttons
+        disableElements(allOtherFields);
+        disableElements(allOtherButtons);
+        
+        // Enable fields in selectionsA
+        enableElements(selectionInputs);
+        
+        // Add event listeners to selections A fields
+        selectionInputs.forEach(input => {
+            input.addEventListener('input', checkProceedButtonState);
+            input.addEventListener('change', checkProceedButtonState);
         });
-        
-        // Disable all buttons except Proceed
-        allButtons.forEach(button => {
-            // Give buttons IDs for better targeting
-            if (!button.id) {
-                button.id = 'btn_' + Math.random().toString(36).substr(2, 9);
-            }
+    }
+    
+    /**
+     * Disable a single element
+     * @param {HTMLElement} element - The element to disable
+     */
+    function disableElement(element) {
+        if (element.tagName.toLowerCase() === 'a') {
+            element.classList.add('disabled');
+            element.setAttribute('tabindex', '-1');
             
-            if (button !== lnkprocedd) {
-                button.classList.add('disabled');
-                button.style.opacity = '0.5';
-                button.style.pointerEvents = 'none';
+            // Store original onclick
+            if (element.onclick) {
+                element.setAttribute('data-original-onclick', element.onclick.toString());
+                element.onclick = null;
             }
-        });
-        
-        // Enable fields inside ctl18_selectionsA
-        if (ctl18_selectionsA) {
-            const ctl18_selectionsAInputs = ctl18_selectionsA.querySelectorAll('input, select');
-            ctl18_selectionsAInputs.forEach(input => {
-                input.disabled = false;
-            });
+        } else {
+            element.disabled = true;
         }
     }
     
-    // Function to set the state after Proceed is clicked
-    function setProceedState() {
-        // Update state tracking
-        isProceedClicked = true;
+    /**
+     * Enable a single element
+     * @param {HTMLElement} element - The element to enable
+     */
+    function enableElement(element) {
+        if (element.tagName.toLowerCase() === 'a') {
+            element.classList.remove('disabled');
+            element.removeAttribute('tabindex');
+            
+            // Restore original onclick if it exists
+            const originalOnclick = element.getAttribute('data-original-onclick');
+            if (originalOnclick) {
+                // This is a simplified approach - might need improvement for complex onclick handlers
+                element.onclick = new Function(`return ${originalOnclick}`)();
+            }
+        } else {
+            element.disabled = false;
+        }
+    }
+    
+    /**
+     * Check if the Proceed button should be enabled
+     */
+    function checkProceedButtonState() {
+        if (areAllFieldsFilled(selectionsA)) {
+            enableElement(proceedBtn);
+        } else {
+            disableElement(proceedBtn);
+        }
+    }
+    
+    /**
+     * Handle "Proceed" button click
+     * @param {Event} e - The click event
+     */
+    function handleProceedClick(e) {
+        if (e) e.preventDefault();
         
         // Show Reset button
-        if (lnkreset) {
-            const lnkresetContainer = lnkreset.closest('.bi-newmodal__resetbtn');
-            if (lnkresetContainer) {
-                lnkresetContainer.style.display = 'block';
-            }
-        }
+        resetBtn.style.display = 'block';
         
         // Disable Proceed button
-        if (lnkprocedd) {
-            lnkprocedd.classList.add('disabled');
-            lnkprocedd.style.opacity = '0.5';
-            lnkprocedd.style.pointerEvents = 'none';
-        }
-        
-        // Enable Reset button
-        if (lnkreset) {
-            lnkreset.classList.remove('disabled');
-            lnkreset.style.opacity = '1';
-            lnkreset.style.pointerEvents = 'auto';
-        }
+        disableElement(proceedBtn);
         
         // Enable all other fields and buttons
-        allInputs.forEach(input => {
-            input.disabled = false;
+        enableElements(allOtherFields);
+        enableElements(allOtherButtons);
+    }
+    
+    /**
+     * Handle "Reset" button click
+     * @param {Event} e - The click event
+     */
+    function handleResetClick(e) {
+        if (e) e.preventDefault();
+        
+        // Hide Reset button
+        resetBtn.style.display = 'none';
+        
+        // Reset values in selectionsA
+        selectionInputs.forEach(input => {
+            input.value = '';
         });
         
-        allButtons.forEach(button => {
-            if (button !== lnkprocedd) {
-                button.classList.remove('disabled');
-                button.style.opacity = '1';
-                button.style.pointerEvents = 'auto';
-            }
-        });
+        // Disable Proceed button
+        disableElement(proceedBtn);
+        
+        // Disable all other fields and buttons
+        disableElements(allOtherFields);
+        disableElements(allOtherButtons);
+        
+        // Enable fields in selectionsA
+        enableElements(selectionInputs);
     }
     
-    // Create a function to keep inputs enabled
-    function keepInputsEnabled(e) {
-        if (isProceedClicked && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT')) {
-            // Ensure the input remains enabled
-            setTimeout(() => {
-                e.target.disabled = false;
-            }, 0);
-        }
-    }
+    // Add event listeners
+    proceedBtn.addEventListener('click', handleProceedClick);
+    resetBtn.addEventListener('click', handleResetClick);
     
-    // Prevent inputs from being disabled after "Proceed" is clicked
-    modal.addEventListener('change', keepInputsEnabled);
-    modal.addEventListener('input', keepInputsEnabled);
-    
-    // Event listener for Proceed button
-    if (lnkprocedd) {
-        lnkprocedd.addEventListener('click', function(e) {
-            e.preventDefault();
-            setProceedState();
-        });
-    }
-    
-    // Event listener for Reset button
-    if (lnkreset) {
-        lnkreset.addEventListener('click', function(e) {
-            e.preventDefault();
-            setInitialState();
-        });
-    }
-    
-    // Initialize to initial state when page loads
-    setInitialState();
+    // Set up initial state
+    setupInitialState();
 });
   // script ends for the pop-up page "bi-newmodal"
 // checkout button disabled script
