@@ -1,389 +1,252 @@
 // script for the pop-up page "bi-newmodal"
-// Product Modal Functionality with ID Selectors and State Persistence
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the modal container by ID
-    const modalContainer = document.getElementById('ctl18_divVar');
+    // Configuration using IDs from your HTML
+    const config = {
+        modalId: 'ctl18_divVar',
+        selectionsContainerId: 'ctl18_selectionsA',
+        buttonWrapId: 'ctl18_divmaster',
+        proceedButtonId: 'lnkprocedd',
+        resetButtonId: 'lnkreset'
+    };
+
+    // Session storage keys
+    const PROCEED_CLICKED = 'proceedButtonClicked';
+    const FORM_DATA = 'formData';
+
+    // Get references to important elements
+    const modal = document.getElementById(config.modalId);
+    if (!modal) return; // Exit if modal not found
+
+    const selectionsContainer = document.getElementById(config.selectionsContainerId);
+    const proceedButton = document.getElementById(config.proceedButtonId);
+    const resetButton = document.getElementById(config.resetButtonId);
     
-    // Generate a unique ID for this form/page to use in localStorage
-    const formId = window.location.pathname + '-modalState';
+    // Get all input fields in the initial active area
+    const initialInputFields = selectionsContainer ? 
+        selectionsContainer.querySelectorAll('input, select') : [];
     
-    // Get the selections area by ID
-    const selectionsA = document.getElementById('ctl18_selectionsA');
+    // Get all other fields and buttons that should be disabled initially
+    const allOtherInputFields = [];
     
-    // Get the main wrapper by ID
-    const mainWrapper = document.getElementById('ctl18_divmaster');
-    
-    // Get the "Proceed" button
-    const proceedBtn = document.getElementById('lnkprocedd');
-    
-    // Get the "Reset" button
-    const resetBtn = document.getElementById('lnkreset');
-    
-    // Get inputs inside selectionsA
-    const selectionInputs = selectionsA.querySelectorAll('.bi-newmodal__fieldinput, .bi-newmodal__drpdwn');
-    
-    // Get all other inputs, buttons, and selects on the page (excluding those in selectionsA)
-    const allOtherFields = getOtherFields(selectionsA);
-    const allOtherButtons = getOtherButtons(proceedBtn, resetBtn);
-    
-    /**
-     * Get all input fields that are not in the selectionsA div
-     * @param {HTMLElement} selectionsA - The selectionsA div element
-     * @returns {NodeList} - All other input fields
-     */
-    function getOtherFields(selectionsA) {
-        // Get all inputs, selects on the page
-        const allFields = modalContainer.querySelectorAll('.bi-newmodal__fieldinput, .bi-newmodal__drpdwn');
-        
-        // Filter out the ones in selectionsA
-        return Array.from(allFields).filter(field => {
-            return !selectionsA.contains(field);
-        });
-    }
-    
-    /**
-     * Get all buttons that are not the Proceed or Reset button
-     * @param {HTMLElement} proceedBtn - The Proceed button
-     * @param {HTMLElement} resetBtn - The Reset button
-     * @returns {NodeList} - All other buttons
-     */
-    function getOtherButtons(proceedBtn, resetBtn) {
-        // Get all buttons on the page
-        const allButtons = modalContainer.querySelectorAll('.bi-btn');
-        
-        // Filter out proceedBtn and resetBtn
-        return Array.from(allButtons).filter(button => {
-            return button !== proceedBtn && button !== resetBtn;
-        });
-    }
-    
-    /**
-     * Save form state to localStorage
-     * @param {String} state - The current state ('initial' or 'proceeded')
-     * @param {Object} formValues - The form values to save
-     */
-    function saveState(state, formValues = {}) {
-        const stateData = {
-            state: state,
-            formValues: formValues
-        };
-        localStorage.setItem(formId, JSON.stringify(stateData));
-    }
-    
-    /**
-     * Load form state from localStorage
-     * @returns {Object|null} - The saved state or null if none exists
-     */
-    function loadState() {
-        const savedState = localStorage.getItem(formId);
-        if (savedState) {
-            try {
-                return JSON.parse(savedState);
-            } catch (e) {
-                console.error('Error parsing saved state:', e);
-                return null;
+    // Find all inputs, selects, and buttons outside the initial active area
+    if (modal) {
+        const allElements = modal.querySelectorAll('input, select, a.bi-btn');
+        allElements.forEach(el => {
+            // Skip the proceed button and elements in the initial selections area
+            if ((el === proceedButton) || 
+                (el === resetButton) || 
+                (selectionsContainer && selectionsContainer.contains(el))) {
+                return;
             }
-        }
-        return null;
-    }
-    
-    /**
-     * Get all form values
-     * @returns {Object} - Object with field IDs/names as keys and values as values
-     */
-    function getFormValues() {
-        const values = {};
-        
-        // Get values from selectionsA inputs
-        selectionInputs.forEach(input => {
-            const id = input.id || input.name || generateTempId(input);
-            values[id] = input.value;
-        });
-        
-        // Get values from other fields
-        allOtherFields.forEach(field => {
-            const id = field.id || field.name || generateTempId(field);
-            values[id] = field.value;
-        });
-        
-        return values;
-    }
-    
-    /**
-     * Generate a temporary ID for an element
-     * @param {HTMLElement} element - The element to generate ID for
-     * @returns {String} - A unique ID
-     */
-    function generateTempId(element) {
-        // Use existing data attribute if present
-        if (element.dataset.tempId) {
-            return element.dataset.tempId;
-        }
-        
-        // Generate a new ID
-        const newId = 'temp-id-' + Math.random().toString(36).substr(2, 9);
-        element.dataset.tempId = newId;
-        return newId;
-    }
-    
-    /**
-     * Restore form values from saved state
-     * @param {Object} formValues - The form values to restore
-     */
-    function restoreFormValues(formValues) {
-        if (!formValues) return;
-        
-        // Restore selectionsA inputs
-        selectionInputs.forEach(input => {
-            const id = input.id || input.name || (input.dataset.tempId || '');
-            if (id && formValues[id] !== undefined) {
-                input.value = formValues[id];
-            }
-        });
-        
-        // Restore other fields
-        allOtherFields.forEach(field => {
-            const id = field.id || field.name || (field.dataset.tempId || '');
-            if (id && formValues[id] !== undefined) {
-                field.value = formValues[id];
-            }
+            
+            // Add to the list of elements to disable
+            allOtherInputFields.push(el);
         });
     }
-    
-    /**
-     * Disable all elements in a collection
-     * @param {Array|NodeList} elements - The elements to disable
-     */
-    function disableElements(elements) {
-        elements.forEach(element => {
-            element.disabled = true;
-            if (element.tagName.toLowerCase() === 'a') {
-                element.classList.add('disabled');
-                element.setAttribute('tabindex', '-1');
-                
-                // Store original onclick
-                if (element.onclick) {
-                    element.setAttribute('data-original-onclick', element.onclick.toString());
-                    element.onclick = null;
+
+    // Function to save form data to session storage
+    function saveFormData() {
+        const formData = {};
+        const allInputs = modal.querySelectorAll('input, select');
+        allInputs.forEach((input, index) => {
+            // Use ID if available, otherwise use a generated ID
+            const key = input.id || `input_${index}`;
+            formData[key] = input.value;
+        });
+        sessionStorage.setItem(FORM_DATA, JSON.stringify(formData));
+    }
+
+    // Function to restore form data from session storage
+    function restoreFormData() {
+        const formDataJson = sessionStorage.getItem(FORM_DATA);
+        if (formDataJson) {
+            const formData = JSON.parse(formDataJson);
+            Object.keys(formData).forEach(key => {
+                // Handle both ID-based and index-based keys
+                if (key.startsWith('input_')) {
+                    const index = parseInt(key.split('_')[1]);
+                    const inputs = modal.querySelectorAll('input, select');
+                    if (inputs[index]) {
+                        inputs[index].value = formData[key];
+                    }
+                } else {
+                    const input = document.getElementById(key);
+                    if (input) {
+                        input.value = formData[key];
+                    }
                 }
-            }
-        });
-    }
-    
-    /**
-     * Enable all elements in a collection
-     * @param {Array|NodeList} elements - The elements to enable
-     */
-    function enableElements(elements) {
-        elements.forEach(element => {
-            element.disabled = false;
-            if (element.tagName.toLowerCase() === 'a') {
-                element.classList.remove('disabled');
-                element.removeAttribute('tabindex');
-                
-                // Restore original onclick if it exists
-                const originalOnclick = element.getAttribute('data-original-onclick');
-                if (originalOnclick) {
-                    // This is a simplified approach - might need improvement for complex onclick handlers
-                    element.onclick = new Function(`return ${originalOnclick}`)();
-                }
-            }
-        });
-    }
-    
-    /**
-     * Check if all required fields in a container have values
-     * @param {HTMLElement} container - The container element
-     * @returns {boolean} - Whether all required fields have values
-     */
-    function areAllFieldsFilled(container) {
-        let allFilled = true;
-        const requiredFields = container.querySelectorAll('.bi-newmodal__fieldinput, .bi-newmodal__drpdwn');
-        
-        requiredFields.forEach(field => {
-            if (!field.value || field.value.trim() === '') {
-                allFilled = false;
-            }
-        });
-        
-        return allFilled;
-    }
-    
-    /**
-     * Set up the initial state
-     */
-    function setupInitialState() {
-        // Load saved state if exists
-        const savedState = loadState();
-        
-        if (savedState && savedState.state === 'proceeded') {
-            // Restore the "proceeded" state
-            restoreFormValues(savedState.formValues);
-            setProceedState();
-            checkProceedButtonState(); // Make sure proceed button is enabled/disabled correctly
-        } else {
-            // Hide Reset button
-            resetBtn.style.display = 'none';
-            
-            // Disable Proceed button initially
-            disableElement(proceedBtn);
-            
-            // Disable all other fields and buttons
-            disableElements(allOtherFields);
-            disableElements(allOtherButtons);
-            
-            // Enable fields in selectionsA
-            enableElements(selectionInputs);
-            
-            // Restore any saved values for initial state
-            if (savedState && savedState.formValues) {
-                restoreFormValues(savedState.formValues);
-            }
-            
-            // Update proceed button state based on restored values
-            checkProceedButtonState();
-            
-            // Save the initial state
-            saveState('initial', getFormValues());
-        }
-        
-        // Add event listeners to selections A fields
-        selectionInputs.forEach(input => {
-            input.addEventListener('input', function() {
-                checkProceedButtonState();
-                saveState('initial', getFormValues());
             });
-            input.addEventListener('change', function() {
-                checkProceedButtonState();
-                saveState('initial', getFormValues());
-            });
-        });
-        
-        // Add event listeners to other fields for saving state
-        allOtherFields.forEach(field => {
-            field.addEventListener('input', function() {
-                saveState('proceeded', getFormValues());
-            });
-            field.addEventListener('change', function() {
-                saveState('proceeded', getFormValues());
-            });
-        });
-    }
-    
-    /**
-     * Set to the "proceeded" state (after clicking Proceed)
-     */
-    function setProceedState() {
-        // Show Reset button
-        resetBtn.style.display = 'block';
-        
-        // Disable Proceed button
-        disableElement(proceedBtn);
-        
-        // Enable all other fields and buttons
-        enableElements(allOtherFields);
-        enableElements(allOtherButtons);
-    }
-    
-    /**
-     * Disable a single element
-     * @param {HTMLElement} element - The element to disable
-     */
-    function disableElement(element) {
-        if (element.tagName.toLowerCase() === 'a') {
-            element.classList.add('disabled');
-            element.setAttribute('tabindex', '-1');
-            
-            // Store original onclick
-            if (element.onclick) {
-                element.setAttribute('data-original-onclick', element.onclick.toString());
-                element.onclick = null;
-            }
-        } else {
-            element.disabled = true;
         }
     }
-    
-    /**
-     * Enable a single element
-     * @param {HTMLElement} element - The element to enable
-     */
-    function enableElement(element) {
-        if (element.tagName.toLowerCase() === 'a') {
-            element.classList.remove('disabled');
-            element.removeAttribute('tabindex');
-            
-            // Restore original onclick if it exists
-            const originalOnclick = element.getAttribute('data-original-onclick');
-            if (originalOnclick) {
-                // This is a simplified approach - might need improvement for complex onclick handlers
-                element.onclick = new Function(`return ${originalOnclick}`)();
+
+    // Function to disable an element
+    function disableElement(el) {
+        if (el.tagName.toLowerCase() === 'a') {
+            // For anchor tags, add a disabled class and prevent clicks
+            el.classList.add('disabled');
+            el.style.pointerEvents = 'none';
+            el.style.opacity = '0.5';
+        } else {
+            // For input and select elements
+            el.disabled = true;
+        }
+    }
+
+    // Function to enable an element
+    function enableElement(el) {
+        if (el.tagName.toLowerCase() === 'a') {
+            // For anchor tags, remove disabled class and allow clicks
+            el.classList.remove('disabled');
+            el.style.pointerEvents = '';
+            el.style.opacity = '';
+        } else {
+            // For input and select elements
+            el.disabled = false;
+        }
+    }
+
+    // Function to apply initial state
+    function applyInitialState() {
+        // Check if we're in the "proceeded" state from session storage
+        const proceedClicked = sessionStorage.getItem(PROCEED_CLICKED) === 'true';
+        
+        if (proceedClicked) {
+            // Apply the "after proceed" state
+            if (resetButton) {
+                resetButton.style.display = 'inline-block';
+                resetButton.parentElement.style.display = 'inline-block';
             }
+            
+            if (proceedButton) {
+                disableElement(proceedButton);
+            }
+            
+            // Enable all other fields
+            allOtherInputFields.forEach(el => {
+                enableElement(el);
+            });
         } else {
-            element.disabled = false;
+            // Apply initial state - only initial fields and proceed button enabled
+            if (resetButton) {
+                resetButton.style.display = 'none';
+                resetButton.parentElement.style.display = 'none';
+            }
+            
+            // Disable all other fields
+            allOtherInputFields.forEach(el => {
+                disableElement(el);
+            });
+            
+            // Enable initial fields
+            initialInputFields.forEach(field => {
+                enableElement(field);
+            });
+            
+            // Check if initial fields have values to enable/disable proceed button
+            updateProceedButtonState();
+        }
+        
+        // Restore any saved form data
+        restoreFormData();
+    }
+
+    // Function to update the state of the proceed button based on initial fields
+    function updateProceedButtonState() {
+        if (!proceedButton) return;
+        
+        let allFieldsHaveValues = true;
+        initialInputFields.forEach(field => {
+            if (!field.value.trim()) {
+                allFieldsHaveValues = false;
+            }
+        });
+        
+        if (allFieldsHaveValues) {
+            enableElement(proceedButton);
+        } else {
+            disableElement(proceedButton);
         }
     }
-    
-    /**
-     * Check if the Proceed button should be enabled
-     */
-    function checkProceedButtonState() {
-        if (areAllFieldsFilled(selectionsA)) {
-            enableElement(proceedBtn);
-        } else {
-            disableElement(proceedBtn);
-        }
-    }
-    
-    /**
-     * Handle "Proceed" button click
-     * @param {Event} e - The click event
-     */
+
+    // Function to handle proceed button click
     function handleProceedClick(e) {
-        if (e) e.preventDefault();
+        e.preventDefault();
         
-        // Update state to proceeded
-        setProceedState();
+        if (resetButton) {
+            resetButton.style.display = 'inline-block';
+            resetButton.parentElement.style.display = 'inline-block';
+        }
         
-        // Save state
-        saveState('proceeded', getFormValues());
-    }
-    
-    /**
-     * Handle "Reset" button click
-     * @param {Event} e - The click event
-     */
-    function handleResetClick(e) {
-        if (e) e.preventDefault();
+        if (proceedButton) {
+            disableElement(proceedButton);
+        }
         
-        // Hide Reset button
-        resetBtn.style.display = 'none';
-        
-        // Reset values in selectionsA
-        selectionInputs.forEach(input => {
-            input.value = '';
+        // Enable all other fields
+        allOtherInputFields.forEach(el => {
+            enableElement(el);
         });
         
-        // Disable Proceed button
-        disableElement(proceedBtn);
+        // Save state to session storage
+        sessionStorage.setItem(PROCEED_CLICKED, 'true');
+        saveFormData();
+    }
+
+    // Function to handle reset button click
+    function handleResetClick(e) {
+        e.preventDefault();
         
-        // Disable all other fields and buttons
-        disableElements(allOtherFields);
-        disableElements(allOtherButtons);
+        if (resetButton) {
+            resetButton.style.display = 'none';
+            resetButton.parentElement.style.display = 'none';
+        }
         
-        // Enable fields in selectionsA
-        enableElements(selectionInputs);
+        // Clear initial fields
+        initialInputFields.forEach(field => {
+            field.value = '';
+        });
         
-        // Reset the stored form state
-        saveState('initial', {});
+        // Disable all other fields
+        allOtherInputFields.forEach(el => {
+            disableElement(el);
+        });
+        
+        // Enable initial fields
+        initialInputFields.forEach(field => {
+            enableElement(field);
+        });
+        
+        // Reset proceed button state
+        if (proceedButton) {
+            disableElement(proceedButton);
+        }
+        
+        // Clear session storage state
+        sessionStorage.removeItem(PROCEED_CLICKED);
+        sessionStorage.removeItem(FORM_DATA);
+    }
+
+    // Set up event listeners
+    if (proceedButton) {
+        proceedButton.addEventListener('click', handleProceedClick);
     }
     
-    // Add event listeners
-    proceedBtn.addEventListener('click', handleProceedClick);
-    resetBtn.addEventListener('click', handleResetClick);
+    if (resetButton) {
+        resetButton.addEventListener('click', handleResetClick);
+    }
     
-    // Set up initial state and restore any saved state
-    setupInitialState();
+    // Add event listeners to initial input fields
+    initialInputFields.forEach(field => {
+        field.addEventListener('input', updateProceedButtonState);
+        field.addEventListener('change', updateProceedButtonState);
+    });
+
+    // Handle page reload and navigation
+    window.addEventListener('beforeunload', function() {
+        saveFormData();
+    });
+
+    // Apply the initial state
+    applyInitialState();
 });
   // script ends for the pop-up page "bi-newmodal"
 // checkout button disabled script
