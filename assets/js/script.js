@@ -1,8 +1,11 @@
 // script for the pop-up page "bi-newmodal"
-// Product Modal Functionality with ID Selectors
+// Product Modal Functionality with ID Selectors and State Persistence
 document.addEventListener('DOMContentLoaded', function() {
     // Get the modal container by ID
     const modalContainer = document.getElementById('ctl18_divVar');
+    
+    // Generate a unique ID for this form/page to use in localStorage
+    const formId = window.location.pathname + '-modalState';
     
     // Get the selections area by ID
     const selectionsA = document.getElementById('ctl18_selectionsA');
@@ -51,6 +54,99 @@ document.addEventListener('DOMContentLoaded', function() {
         // Filter out proceedBtn and resetBtn
         return Array.from(allButtons).filter(button => {
             return button !== proceedBtn && button !== resetBtn;
+        });
+    }
+    
+    /**
+     * Save form state to localStorage
+     * @param {String} state - The current state ('initial' or 'proceeded')
+     * @param {Object} formValues - The form values to save
+     */
+    function saveState(state, formValues = {}) {
+        const stateData = {
+            state: state,
+            formValues: formValues
+        };
+        localStorage.setItem(formId, JSON.stringify(stateData));
+    }
+    
+    /**
+     * Load form state from localStorage
+     * @returns {Object|null} - The saved state or null if none exists
+     */
+    function loadState() {
+        const savedState = localStorage.getItem(formId);
+        if (savedState) {
+            try {
+                return JSON.parse(savedState);
+            } catch (e) {
+                console.error('Error parsing saved state:', e);
+                return null;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Get all form values
+     * @returns {Object} - Object with field IDs/names as keys and values as values
+     */
+    function getFormValues() {
+        const values = {};
+        
+        // Get values from selectionsA inputs
+        selectionInputs.forEach(input => {
+            const id = input.id || input.name || generateTempId(input);
+            values[id] = input.value;
+        });
+        
+        // Get values from other fields
+        allOtherFields.forEach(field => {
+            const id = field.id || field.name || generateTempId(field);
+            values[id] = field.value;
+        });
+        
+        return values;
+    }
+    
+    /**
+     * Generate a temporary ID for an element
+     * @param {HTMLElement} element - The element to generate ID for
+     * @returns {String} - A unique ID
+     */
+    function generateTempId(element) {
+        // Use existing data attribute if present
+        if (element.dataset.tempId) {
+            return element.dataset.tempId;
+        }
+        
+        // Generate a new ID
+        const newId = 'temp-id-' + Math.random().toString(36).substr(2, 9);
+        element.dataset.tempId = newId;
+        return newId;
+    }
+    
+    /**
+     * Restore form values from saved state
+     * @param {Object} formValues - The form values to restore
+     */
+    function restoreFormValues(formValues) {
+        if (!formValues) return;
+        
+        // Restore selectionsA inputs
+        selectionInputs.forEach(input => {
+            const id = input.id || input.name || (input.dataset.tempId || '');
+            if (id && formValues[id] !== undefined) {
+                input.value = formValues[id];
+            }
+        });
+        
+        // Restore other fields
+        allOtherFields.forEach(field => {
+            const id = field.id || field.name || (field.dataset.tempId || '');
+            if (id && formValues[id] !== undefined) {
+                field.value = formValues[id];
+            }
         });
     }
     
@@ -117,24 +213,76 @@ document.addEventListener('DOMContentLoaded', function() {
      * Set up the initial state
      */
     function setupInitialState() {
-        // Hide Reset button
-        resetBtn.style.display = 'none';
+        // Load saved state if exists
+        const savedState = loadState();
         
-        // Disable Proceed button initially
-        disableElement(proceedBtn);
-        
-        // Disable all other fields and buttons
-        disableElements(allOtherFields);
-        disableElements(allOtherButtons);
-        
-        // Enable fields in selectionsA
-        enableElements(selectionInputs);
+        if (savedState && savedState.state === 'proceeded') {
+            // Restore the "proceeded" state
+            restoreFormValues(savedState.formValues);
+            setProceedState();
+            checkProceedButtonState(); // Make sure proceed button is enabled/disabled correctly
+        } else {
+            // Hide Reset button
+            resetBtn.style.display = 'none';
+            
+            // Disable Proceed button initially
+            disableElement(proceedBtn);
+            
+            // Disable all other fields and buttons
+            disableElements(allOtherFields);
+            disableElements(allOtherButtons);
+            
+            // Enable fields in selectionsA
+            enableElements(selectionInputs);
+            
+            // Restore any saved values for initial state
+            if (savedState && savedState.formValues) {
+                restoreFormValues(savedState.formValues);
+            }
+            
+            // Update proceed button state based on restored values
+            checkProceedButtonState();
+            
+            // Save the initial state
+            saveState('initial', getFormValues());
+        }
         
         // Add event listeners to selections A fields
         selectionInputs.forEach(input => {
-            input.addEventListener('input', checkProceedButtonState);
-            input.addEventListener('change', checkProceedButtonState);
+            input.addEventListener('input', function() {
+                checkProceedButtonState();
+                saveState('initial', getFormValues());
+            });
+            input.addEventListener('change', function() {
+                checkProceedButtonState();
+                saveState('initial', getFormValues());
+            });
         });
+        
+        // Add event listeners to other fields for saving state
+        allOtherFields.forEach(field => {
+            field.addEventListener('input', function() {
+                saveState('proceeded', getFormValues());
+            });
+            field.addEventListener('change', function() {
+                saveState('proceeded', getFormValues());
+            });
+        });
+    }
+    
+    /**
+     * Set to the "proceeded" state (after clicking Proceed)
+     */
+    function setProceedState() {
+        // Show Reset button
+        resetBtn.style.display = 'block';
+        
+        // Disable Proceed button
+        disableElement(proceedBtn);
+        
+        // Enable all other fields and buttons
+        enableElements(allOtherFields);
+        enableElements(allOtherButtons);
     }
     
     /**
@@ -194,15 +342,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleProceedClick(e) {
         if (e) e.preventDefault();
         
-        // Show Reset button
-        resetBtn.style.display = 'block';
+        // Update state to proceeded
+        setProceedState();
         
-        // Disable Proceed button
-        disableElement(proceedBtn);
-        
-        // Enable all other fields and buttons
-        enableElements(allOtherFields);
-        enableElements(allOtherButtons);
+        // Save state
+        saveState('proceeded', getFormValues());
     }
     
     /**
@@ -229,13 +373,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Enable fields in selectionsA
         enableElements(selectionInputs);
+        
+        // Reset the stored form state
+        saveState('initial', {});
     }
     
     // Add event listeners
     proceedBtn.addEventListener('click', handleProceedClick);
     resetBtn.addEventListener('click', handleResetClick);
     
-    // Set up initial state
+    // Set up initial state and restore any saved state
     setupInitialState();
 });
   // script ends for the pop-up page "bi-newmodal"
