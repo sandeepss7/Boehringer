@@ -759,6 +759,14 @@
 
         .bi-newmodal__fieldgrp {
             width: 50%;
+
+            .bi-newmodal__drpdwn {
+                height: 40px;
+            }
+
+            .bi-newmodal__fieldinput {
+                height: 40px;
+            }
         }
      }
 
