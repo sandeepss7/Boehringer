@@ -766,5 +766,15 @@
         width: 20%;
         margin: 15px 0px;
     }
+
+    .bi-addqntybtn {
+        width: 100%;
+        display: flex;
+        justify-content: center; 
+
+        .btn-grey {
+            margin-left: 0;
+        }
+    }
 }
 
