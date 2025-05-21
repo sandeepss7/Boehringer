@@ -162,6 +162,7 @@
 
         &:disabled {
             opacity: 0.4;
+            cursor: not-allowed;
         }
     }
 
@@ -182,8 +183,9 @@
             background-color: #f6f5f3 !important;
         }
 
-        &:disabled {
+        input:disabled {
             opacity: 0.4;
+            cursor: not-allowed;
         }
     }
 
