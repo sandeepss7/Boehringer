@@ -118,7 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             if (proceedButton) {
-                disableElement(proceedButton);
+                proceedButton.style.display = 'none';
+                proceedButton.parentElement.style.display = 'none';
             }
             
             // Enable all other fields
@@ -130,6 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (resetButton) {
                 resetButton.style.display = 'none';
                 resetButton.parentElement.style.display = 'none';
+            }
+            
+            if (proceedButton) {
+                proceedButton.style.display = 'inline-block';
+                proceedButton.parentElement.style.display = 'inline-block';
             }
             
             // Disable all other fields
@@ -172,13 +178,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleProceedClick(e) {
         e.preventDefault();
         
+        // Hide Proceed button and show Reset button
+        if (proceedButton) {
+            proceedButton.style.display = 'none';
+            proceedButton.parentElement.style.display = 'none';
+        }
+        
         if (resetButton) {
             resetButton.style.display = 'inline-block';
             resetButton.parentElement.style.display = 'inline-block';
-        }
-        
-        if (proceedButton) {
-            disableElement(proceedButton);
         }
         
         // Enable all other fields
@@ -195,9 +203,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleResetClick(e) {
         e.preventDefault();
         
+        // Hide Reset button and show Proceed button
         if (resetButton) {
             resetButton.style.display = 'none';
             resetButton.parentElement.style.display = 'none';
+        }
+        
+        if (proceedButton) {
+            proceedButton.style.display = 'inline-block';
+            proceedButton.parentElement.style.display = 'inline-block';
         }
         
         // Save the dropdown selection in bi-newmodal__selectionsa
