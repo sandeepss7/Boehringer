@@ -814,6 +814,7 @@
 }
 .bi-cart__spec {
    display: flex;
+   flex-direction: column;
    gap: 20px;
 }
 .bi-cart__txt {
