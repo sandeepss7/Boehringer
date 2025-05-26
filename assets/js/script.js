@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
         resetButtonId: 'lnkreset'
     };
 
+    // Check if the master div exists - exit if not present
+    const masterDiv = document.getElementById(config.buttonWrapId);
+    if (!masterDiv) {
+        return; // Skip all functionality if ctl18_divmaster doesn't exist
+    }
+
     // Session storage keys
     const PROCEED_CLICKED = 'proceedButtonClicked';
     const FORM_DATA = 'formData';
