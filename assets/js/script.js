@@ -92,8 +92,20 @@ document.addEventListener('DOMContentLoaded', function() {
             el.classList.add('disabled');
             el.style.pointerEvents = 'none';
             el.style.opacity = '0.5';
+        } else if (el.tagName.toLowerCase() === 'select') {
+            // For select elements, disable and set to first option as placeholder
+            el.disabled = true;
+            // Save current selection if it exists
+            const currentValue = el.value;
+            if (currentValue) {
+                el.setAttribute('data-saved-value', currentValue);
+            }
+            // Set to first option to show as placeholder
+            if (el.options.length > 0) {
+                el.selectedIndex = 0;
+            }
         } else {
-            // For input and select elements
+            // For input elements
             el.disabled = true;
         }
     }
@@ -105,8 +117,17 @@ document.addEventListener('DOMContentLoaded', function() {
             el.classList.remove('disabled');
             el.style.pointerEvents = '';
             el.style.opacity = '';
+        } else if (el.tagName.toLowerCase() === 'select') {
+            // For select elements, enable and restore previous selection if any
+            el.disabled = false;
+            // Restore previous selection if it was saved
+            const savedValue = el.getAttribute('data-saved-value');
+            if (savedValue) {
+                el.value = savedValue;
+                el.removeAttribute('data-saved-value');
+            }
         } else {
-            // For input and select elements
+            // For input elements
             el.disabled = false;
         }
     }
