@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const proceedButton = document.getElementById(config.proceedButtonId);
     const resetButton = document.getElementById(config.resetButtonId);
     
+    // Get the specific field input that needs special handling
+    const selectionsADiv = document.querySelector('.bi-newmodal__selectionsa');
+    const fieldInput = selectionsADiv ? 
+        selectionsADiv.querySelector('.bi-newmodal__fieldinput') : null;
+    
     // Get all input fields in the initial active area
     const initialInputFields = selectionsContainer ? 
         selectionsContainer.querySelectorAll('input, select') : [];
@@ -132,6 +137,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Function to disable the specific field input in bi-newmodal__selectionsa
+    function disableFieldInput() {
+        if (fieldInput) {
+            fieldInput.disabled = true;
+            fieldInput.style.backgroundColor = '#f5f5f5'; // Optional: visual indication
+            fieldInput.style.cursor = 'not-allowed';
+        }
+    }
+
+    // Function to enable the specific field input in bi-newmodal__selectionsa
+    function enableFieldInput() {
+        if (fieldInput) {
+            fieldInput.disabled = false;
+            fieldInput.style.backgroundColor = ''; // Remove background color
+            fieldInput.style.cursor = '';
+        }
+    }
+
     // Function to apply initial state
     function applyInitialState() {
         // Check if we're in the "proceeded" state from session storage
@@ -153,6 +176,9 @@ document.addEventListener('DOMContentLoaded', function() {
             allOtherInputFields.forEach(el => {
                 enableElement(el);
             });
+
+            // Disable the specific field input when in "proceeded" state
+            disableFieldInput();
         } else {
             // Apply initial state - only initial fields and proceed button enabled
             if (resetButton) {
@@ -174,6 +200,9 @@ document.addEventListener('DOMContentLoaded', function() {
             initialInputFields.forEach(field => {
                 enableElement(field);
             });
+
+            // Ensure the field input is enabled in initial state
+            enableFieldInput();
             
             // Check if initial fields have values to enable/disable proceed button
             updateProceedButtonState();
@@ -220,6 +249,9 @@ document.addEventListener('DOMContentLoaded', function() {
         allOtherInputFields.forEach(el => {
             enableElement(el);
         });
+
+        // Disable the specific field input when Reset button becomes visible
+        disableFieldInput();
         
         // Save state to session storage
         sessionStorage.setItem(PROCEED_CLICKED, 'true');
@@ -263,6 +295,9 @@ document.addEventListener('DOMContentLoaded', function() {
         initialInputFields.forEach(field => {
             enableElement(field);
         });
+
+        // Enable the specific field input when Reset button is clicked
+        enableFieldInput();
         
         // Reset proceed button state
         if (proceedButton) {
