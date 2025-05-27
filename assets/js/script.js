@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const proceedButton = document.getElementById(config.proceedButtonId);
     const resetButton = document.getElementById(config.resetButtonId);
     
-    // Get the specific field input that needs special handling
+    // Get all inputs inside the bi-newmodal__selectionsa div that need special handling
     const selectionsADiv = document.querySelector('.bi-newmodal__selectionsa');
-    const fieldInput = selectionsADiv ? 
-        selectionsADiv.querySelector('.bi-newmodal__fieldinput') : null;
+    const selectionsAInputs = selectionsADiv ? 
+        selectionsADiv.querySelectorAll('input') : [];
     
     // Get all input fields in the initial active area
     const initialInputFields = selectionsContainer ? 
@@ -137,22 +137,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to disable the specific field input in bi-newmodal__selectionsa
-    function disableFieldInput() {
-        if (fieldInput) {
-            fieldInput.disabled = true;
-            fieldInput.style.backgroundColor = '#f5f5f5'; // Optional: visual indication
-            fieldInput.style.cursor = 'not-allowed';
-        }
+    // Function to disable all inputs in bi-newmodal__selectionsa
+    function disableSelectionsAInputs() {
+        selectionsAInputs.forEach(input => {
+            input.disabled = true;
+            input.style.backgroundColor = '#f5f5f5'; // Optional: visual indication
+            input.style.cursor = 'not-allowed';
+            input.style.opacity = '0.6';
+        });
     }
 
-    // Function to enable the specific field input in bi-newmodal__selectionsa
-    function enableFieldInput() {
-        if (fieldInput) {
-            fieldInput.disabled = false;
-            fieldInput.style.backgroundColor = ''; // Remove background color
-            fieldInput.style.cursor = '';
-        }
+    // Function to enable all inputs in bi-newmodal__selectionsa
+    function enableSelectionsAInputs() {
+        selectionsAInputs.forEach(input => {
+            input.disabled = false;
+            input.style.backgroundColor = ''; // Remove background color
+            input.style.cursor = '';
+            input.style.opacity = '';
+        });
     }
 
     // Function to apply initial state
@@ -177,8 +179,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 enableElement(el);
             });
 
-            // Disable the specific field input when in "proceeded" state
-            disableFieldInput();
+            // Disable all inputs in bi-newmodal__selectionsa when in "proceeded" state
+            disableSelectionsAInputs();
         } else {
             // Apply initial state - only initial fields and proceed button enabled
             if (resetButton) {
@@ -201,8 +203,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 enableElement(field);
             });
 
-            // Ensure the field input is enabled in initial state
-            enableFieldInput();
+            // Ensure all inputs in bi-newmodal__selectionsa are enabled in initial state
+            enableSelectionsAInputs();
             
             // Check if initial fields have values to enable/disable proceed button
             updateProceedButtonState();
@@ -250,8 +252,8 @@ document.addEventListener('DOMContentLoaded', function() {
             enableElement(el);
         });
 
-        // Disable the specific field input when Reset button becomes visible
-        disableFieldInput();
+        // Disable all inputs in bi-newmodal__selectionsa when Reset button becomes visible
+        disableSelectionsAInputs();
         
         // Save state to session storage
         sessionStorage.setItem(PROCEED_CLICKED, 'true');
@@ -296,8 +298,8 @@ document.addEventListener('DOMContentLoaded', function() {
             enableElement(field);
         });
 
-        // Enable the specific field input when Reset button is clicked
-        enableFieldInput();
+        // Enable all inputs in bi-newmodal__selectionsa when Reset button is clicked
+        enableSelectionsAInputs();
         
         // Reset proceed button state
         if (proceedButton) {
