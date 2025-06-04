@@ -14,9 +14,247 @@
     <!-- styles -->
     <title>PDP-detailst</title>
   </head>
-  <body>
+  <body  class="boehringer">
     <!-- body content start -->
-    
+    <div class="bi-pdpdtls">
+      <div class="container">
+        <div class="bi-pdpdtls__outer">
+          <!-- Quantity & Shipment Mode Section -->
+          <div class="bi-pdpdtls__shpmntmode">
+            <div class="bi-pdpdtls__sechead">
+              <h2 class="bi-pdpdtls__headtxt">
+                Select quantity & Shipment mode
+              </h2>
+              <div class="bi-pdpdtls__drpdwnimg">
+                <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18.75" stroke="#00E47C" stroke-width="2.5"/>
+                <path d="M10.8327 25L19.9993 15L29.166 25" stroke="#00E47C" stroke-width="3.54" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="bi-pdpdtls__seccontent">
+                <div class="bi-pdpdtls__innerbg">
+                  <h4 class="bi-heading__sub">
+                  Unisex sweatshirt dark green 
+                </h4>
+                <form>
+                    <div class="bi-pdpdtls__formrow">
+                        <div class="bi-pdpdtls__formgroup">
+                            <label class="bi-pdpdtls__formlbl" for="totalQuantity">Total quantity</label>
+                            <input class="bi-pdpdtls__forminput" type="number" value="500" id="totalQuantity" name="totalQuantity">
+                        </div>
+                        <div class="bi-pdpdtls__formgroup">
+                            <label class="bi-pdpdtls__formlbl" for="shipmentMode">Shipment mode</label>
+                            <select class="bi-pdpdtls__formdrop" id="shipmentMode" name="shipmentMode">
+                                <option value="air" selected>Air</option>
+                                <option value="ship">Ship</option>
+                                <option value="road">Road</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="bi-pdpdtls__summary">
+                        <p class="bi-pdpdtls__tprice">Total Price: <span class="bi-pdpdtls__grntxt">$1,649.04</span></p>
+                        <a href="#" class="bi-btn">Proceed</a>
+                    </div>
+                </form>
+                </div>
+            </div>
+          </div>
+
+          <!-- Select Variants Section -->
+          <div class="bi-pdpdtls__varientsec">
+            <div class="bi-pdpdtls__sechead">
+              <h2 class="bi-pdpdtls__headtxt">
+                Select Variants
+              </h2>
+              <div class="bi-pdpdtls__drpdwnimg">
+                <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18.75" stroke="#00E47C" stroke-width="2.5"/>
+                <path d="M10.8327 25L19.9993 15L29.166 25" stroke="#00E47C" stroke-width="3.54" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="bi-pdpdtls__seccontent">
+                <form>
+                    <div class="bi-pdpdtls__varoptns">
+                        <!-- Left Sec -->
+                        <div class="bi-pdpdtls__varprops">
+                          <h4 class="bi-pdpdtls__mtxt">Gender:</h4>
+                          <div class="bi-pdpdtls__optgroup">
+                              <input type="radio" id="male" name="gender" value="male" checked>
+                              <label for="male" class="bi-pdpdtls__optlabel">Male</label>
+                              <input type="radio" id="female" name="gender" value="female">
+                              <label for="female" class="bi-pdpdtls__optlabel">Female</label>
+                          </div>
+
+                          <h4 class="bi-pdpdtls__mtxt">Color:</h4>
+                          <div class="bi-pdpdtls__optgroup">
+                              <input type="radio" id="darkgreen" name="color" value="darkgreen" checked>
+                              <label for="darkgreen" class="bi-pdpdtls__optlabel">Dark Green</label>
+                          </div>
+
+                          <h4 class="bi-pdpdtls__mtxt">Size:</h4>
+                          <div class="bi-pdpdtls__optgroup">
+                              <input type="radio" id="size-m" name="size" value="m" checked>
+                              <label for="size-m" class="bi-pdpdtls__optlabel">M</label>
+                              <input type="radio" id="size-l" name="size" value="l">
+                              <label for="size-l" class="bi-pdpdtls__optlabel">L</label>
+                              <input type="radio" id="size-xl" name="size" value="xl">
+                              <label for="size-xl" class="bi-pdpdtls__optlabel">XL</label>
+                              <input type="radio" id="size-2xl" name="size" value="2xl">
+                              <label for="size-2xl" class="bi-pdpdtls__optlabel">2XL</label>
+                              <input type="radio" id="size-3xl" name="size" value="3xl">
+                              <label for="size-3xl" class="bi-pdpdtls__optlabel">3XL</label>
+                              <input type="radio" id="size-4xl" name="size" value="4xl">
+                              <label for="size-4xl" class="bi-pdpdtls__optlabel">4XL</label>
+                          </div>
+
+                          <h4 class="bi-pdpdtls__mtxt">Choose type of stock:</h4>
+                          <div class="bi-pdpdtls__optgroup">
+                              <input type="radio" id="made-to-order" name="stock" value="made-to-order" checked>
+                              <label for="made-to-order" class="bi-pdpdtls__optlabel">Made to order</label>
+                              <input type="radio" id="stocked" name="stock" value="stocked">
+                              <label for="stocked" class="bi-pdpdtls__optlabel">Stocked</label>
+                          </div>
+                        </div>
+                        <!-- Right Sec -->
+                        <div class="bi-pdpdtls__variantwrap">
+                          <div class="bi-pdpdtls__variantqnty">
+                            <label for="variantQuantity">Quantity for this variant</label>
+                            <input type="number" value="300" id="variantQuantity" name="variantQuantity">
+                          </div>
+                          <a href="#" class="bi-btn">Add this variant</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+
+          <!-- Consolidated Order Section -->
+          <div class="bi-pdpdtls__sechead">
+            <h2 class="bi-pdpdtls__headtxt">
+              Consolidated Order with Product Variants
+            </h2>
+            <div class="bi-pdpdtls__drpdwnimg">
+              <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18.75" stroke="#00E47C" stroke-width="2.5"/>
+              <path d="M10.8327 25L19.9993 15L29.166 25" stroke="#00E47C" stroke-width="3.54" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="bi-pdpdtls__seccontent">
+            <!-- Consolidated Order Table -->
+              <div class="bi-pdpdtls__ordrtable">
+                <!-- container for table integration -->
+                <!-- demo tbl img -->
+                <img src="../assets/images/bi-pdp-ordrtable.png" alt="">
+              </div>
+              <!-- bottom section info text and buttons wrap  -->
+              <div class="bi-pdpdtls__ordrbtmsec">
+                <!-- Left H S -->
+                <div class="bi-pdpdtls__infobtnwrap">
+                  <div class="bi-pdpdtls__statusinfo">
+                    <p class="bi-pdpdtls__statusinfotxt">You have added 400 units of your total quantity you can still add 100 units</p>
+                  </div>
+                  <div class="bi-pdpdtls__ordrbtn">
+                      <a href="#" class="bi-btn">Add to cart</a>
+                  </div>
+                </div>
+                <!-- Right H S -->
+                <!-- add more btn -->
+                <div class="bi-pdpdtls__addmorebtn">
+                  <a href="#" class="bi-btn bi-btn--logo">Add more <span class="bi-btn__logoimg">+</span></a>
+                </div>
+              </div>
+          </div>
+          <!-- scrollable Pricing Tables sec -->
+          <div class="bi-pdpdtls__dtlstable">
+            <p id="ctl18_divquntydis" class="bi-qdhd"><span>Quantity discounts</span>&nbsp;<span class="scroll-indicator show-scroll-indicator"><span>- (Scroll right to view more)</span></span></p>
+            <div iv class="bi-tbl">
+              <div class="bi-tbl__scroll">
+              <table class="bi-tbl__scrolltbl"><tbody>
+              <tr><th><strong>Quantity</strong> (up to)</th> 
+              <td><strong>1</strong></td>
+              <td><strong>10</strong></td>
+              <td><strong>25</strong></td>
+              <td><strong>50</strong></td>
+              <td><strong>100</strong></td>
+              <td><strong>200</strong></td>
+              <td><strong>300</strong></td>
+              <td><strong>400</strong></td>
+              <td><strong>500</strong></td>
+              <td><strong>1000</strong></td>
+              <td><strong>2000</strong></td>
+              <td><strong>5000</strong></td>
+              </tr>
+              <tr class="bi-tbl__tr"><th><strong>Unit price</strong> (SGD) </th>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$13.74</td>
+              <td>$11.56</td>
+              <td>$10.58</td>
+              <td>$9.71</td>
+              </tr>
+              </tbody>
+              </table>
+
+              <p class="bi-shiptxt"> Shipment cost<span class="scroll-indicator"> - (Scroll right to view more)</span></p><table class="bi-tbl__scrolltbl"><tbody>
+              <tr><th>Ship</th>
+              <td>-</td>
+              <td>-</td>
+              <td>$27.06</td>
+              <td>$15.56</td>
+              <td>$9.70</td>
+              <td>$6.77</td>
+              <td>$5.79</td>
+              <td>$5.30</td>
+              <td>$5.00</td>
+              <td>$4.19</td>
+              <td>$3.78</td>
+              <td>$3.51</td>
+              </tr>
+              <tr><th>Air</th>
+              <td>$50.62</td>
+              <td>$42.98</td>
+              <td>$39.74</td>
+              <td>$20.55</td>
+              <td>$18.24</td>
+              <td>$17.39</td>
+              <td>$16.36</td>
+              <td>$15.76</td>
+              <td>$15.76</td>
+              <td>$14.81</td>
+              <td>$14.66</td>
+              <td>$14.59</td>
+              </tr>
+              <tr><th>Road</th>
+              <td>-</td>
+              <td>-</td>
+              <td>$27.06</td>
+              <td>$15.56</td>
+              <td>$9.70</td>
+              <td>$6.77</td>
+              <td>$5.79</td>
+              <td>$5.30</td>
+              <td>$5.00</td>
+              <td>$4.19</td>
+              <td>$3.78</td>
+              <td>$3.51</td>
+              </tr>
+              </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- body content end -->
 
     <!-- scripts -->
