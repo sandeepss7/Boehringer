@@ -1,0 +1,174 @@
+.bi-pdpdtls {
+
+    &__varientinfowrap {
+        padding: 20px 0px;
+    }
+
+    &__varqnttyfield, &__shpmntfield{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    &__varqnttylabl, &__shpmntlabl {
+        font-size: 14px;
+        color: var(--primary-clr);
+        font-weight: 900;
+        padding-bottom: 12px;
+    }
+
+    &__fieldswrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    &__varqnttyinput {
+        border: 1.15px solid #8C8481;
+        border-radius: 5px;
+        color: #54565A;
+        font-size: 14px !important;
+        text-align: left !important;
+        font-weight: 400;
+        padding: 8px 12px;
+        height: 38px;
+
+        &::placeholder {
+            color: #54565A;
+            font-size: 14px;
+        }
+    }
+
+    &__shpmntselect {
+        border: 1.15px solid #8C8481;
+        border-radius: 5px;
+        color: #54565A;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 8px 12px;
+        height: 38px;
+    }
+
+    &__infotext {
+        font-size: 14px;
+        color: #54565A;
+        font-weight: 400;
+        padding: 20px 0px;
+    }
+
+    &__btngroup {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 20px;
+
+        .bi-btn2, .bi-btn {
+            width: 50%;
+            margin: 0;
+        }
+    }
+
+    // pdtcard stylings starts
+
+    &__pdtcrd {
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+        border-radius: 10px;
+        padding: 24px;
+        position: relative;
+    }
+
+    &__clsbtn {
+        position: absolute;
+        top: -18px;
+        right: -18px;
+
+        &:hover {
+            circle {
+                fill: #f5f5f5;
+            }
+        }
+    }
+
+    &__pdtwrap {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+    }
+
+    &__pdtimgcontainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10%;
+        border: 1px solid #C6C6C6;
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    &__pdtimg {
+        width: 90%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__pdttitle {
+        font-size: 14px;
+        color: var(--primary-clr);
+        font-weight: 900;
+        padding-bottom: 12px;
+    }
+
+    &__pdtinfolabel {
+        color: var(--primary-clr);
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+    &__pdtinfovalue {
+        color: #54565A;
+        font-size: 13px;
+        font-weight: 300;
+        padding-left: 3px;
+    }
+
+    &__pdtinfo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__pdtdivider {
+        background-color: #C6C6C6;
+        width: 1px;
+        height: 20px;
+        margin: 0px 6px;
+    }
+
+    &__pdttotalsec {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__pdtshipnginfo {
+        color: #54565A;
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+    &__pdttotalcost {
+        color: var(--primary-clr);
+        font-size: 13px;
+        font-weight: 300;
+        display: inline-flex;
+
+        span {
+            font-weight: 600;
+            padding-left: 4px;
+        }
+    }
+}
