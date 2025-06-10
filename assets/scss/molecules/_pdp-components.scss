@@ -71,19 +71,47 @@
 
     // pdtcard stylings starts
 
+    &__pdtcrdwrap {
+        display: flex;
+        flex-direction: column;
+        max-height: calc(3 * (122px + 20px)); // Height for 3 cards + gap between them
+        overflow-y: auto;
+        overflow-x: hidden;
+        gap: 20px;
+        padding-right: 10px;
+        padding-top: 18px;
+
+         &::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            background: transparent; // Hide the track
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+            
+            &:hover {
+                background: #a8a8a8;
+            }
+        }
+    }
+
     &__pdtcrd {
         background-color: #fff;
         box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
         border-radius: 10px;
-        padding: 24px;
+        padding: 15px;
         position: relative;
         width: 100%;
     }
 
     &__clsbtn {
         position: absolute;
-        top: -18px;
-        right: -18px;
+        top: -10px;
+        right: -15px;
 
         &:hover {
             circle {
@@ -94,7 +122,7 @@
 
     &__pdtwrap {
         display: flex;
-        gap: 24px;
+        gap: 15px;
         align-items: center;
     }
 
@@ -102,9 +130,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 17%;
+        width: 90px;
+        height: 90px;
         border: 1px solid #C6C6C6;
-        padding: 12px;
+        padding: 8px;
         border-radius: 8px;
     }
 
@@ -117,21 +146,23 @@
     }
 
     &__pdttitle {
-        font-size: 16px;
+        font-size: 14px !important;
         color: var(--primary-clr);
         font-weight: 900;
-        padding-bottom: 14px;
+        padding-bottom: 8px;
+        margin-bottom: 0 !important;
+        text-align: left;
     }
 
     &__pdtinfolabel {
         color: var(--primary-clr);
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 300;
     }
 
     &__pdtinfovalue {
         color: #54565A;
-        font-size: 14px;
+        font-size: 11px;
         font-weight: 300;
         padding-left: 3px;
     }
@@ -158,19 +189,67 @@
 
     &__pdtshipnginfo {
         color: #54565A;
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 300;
     }
 
     &__pdttotalcost {
         color: var(--primary-clr);
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 300;
         display: inline-flex;
 
         span {
             font-weight: 600;
             padding-left: 6px;
+            font-size: 12px;
         }
+    }
+
+    // total chart stylings starts
+
+    &__ttlchart {
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    &__ttlchartitem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    &__ttlchartlbl {
+        color: #54565A;
+        font-size: 14px;
+    }
+
+    &__ttlchartvalue {
+        color: var(--primary-clr);
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &__ttlchartbtn {
+        width: 100%;
+        padding: 6px 0px 0px 0px;
+        .bi-btn {
+            margin: 0;
+            width: 100% !important;
+        }
+    }
+
+    .disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        border: 1px solid #ccc;
+        color: #ccc;
     }
 }
