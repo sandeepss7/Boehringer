@@ -74,25 +74,30 @@
     &__pdtcrdwrap {
         display: flex;
         flex-direction: column;
-        max-height: calc(3 * (122px + 20px)); // Height for 3 cards + gap between them
+        max-height: calc(3 * (122px + 20px)); 
         overflow-y: auto;
         overflow-x: hidden;
         gap: 20px;
-        padding-right: 10px;
+        padding-right: 15px;
         padding-top: 18px;
+        margin-bottom: 30px;
+        margin-right: -20px;
+        position: relative;
 
          &::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         
         &::-webkit-scrollbar-track {
-            background: transparent; // Hide the track
+            background: transparent; 
+            margin-left: 8px;
         }
         
         &::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 3px;
             
+
             &:hover {
                 background: #a8a8a8;
             }
