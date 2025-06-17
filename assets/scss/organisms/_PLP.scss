@@ -32,3 +32,20 @@
     }
   }
 }
+
+@include tablet {
+  .boehringer {
+    .bi-plpnprdct {
+      left: 40%;
+    }
+  }
+}
+
+@include mobile {
+  .boehringer {
+    .bi-plpnprdct {
+      margin-left: 6px;
+      top: -23px;
+    }
+  }
+}
