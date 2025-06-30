@@ -23,7 +23,7 @@
     margin-bottom: 60%;
     width: 33%;
     padding: 0px 24px;
-    background-color: #E0E1F6;
+    background-color: #e0e1f6;
 
     img {
       width: 100%;
@@ -182,9 +182,96 @@
   }
   .bi-btn {
     font-size: 16px;
-     .lucide-arrow-right {
-        transform: translateY(2px);
+    .lucide-arrow-right {
+      transform: translateY(2px);
     }
+  }
+}
+
+/* feedback page 27-06-2025 */
+.bi-feedback {
+  .bi-input-out {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .bi-input {
+    width: calc(50% - 16px);
+    label {
+      color: #08312a;
+      &::after {
+        content: "";
+      }
+    }
+  }
+  .min-h {
+    label {
+      min-height: 53px;
+    }
+  }
+  &__newform {
+    padding: 40px 32px 60px 32px;
+    background-color: #fff;
+    height: fit-content;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .bi-bespoke__txt {
+    padding-bottom: 60px;
+  }
+  .bi-bespoke__img {
+    border-radius: 6px;
+    width: 40%;
+    margin-bottom: 0;
+    img {
+      padding: 0 32px;
+    }
+  }
+  .bi-bespoke__captcha {
+    margin: 0;
+  }
+  .bi-btn {
+    margin-left: 0;
+    margin-top: 16px;
+  }
+}
+/* ------------ */
+/* Product suggestion */
+.bi-prdsuggest {
+  .bi-bespoke__img {
+    background-color: #ee6541;
+    justify-content: space-between;
+    img {
+      padding: 0;
+    }
+  }
+
+  .bi-bespoke__newform {
+    padding: 36px;
+    .bi-input {
+      margin-bottom: 16px;
+
+      textarea {
+        width: 100%;
+        border-radius: 6px;
+        padding: 10px 4px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
+          rgba(61, 59, 53, 0.16) 0px 0px 0px 1px,
+          rgba(61, 59, 53, 0.08) 0px 2px 5px 0px;
+        border: 0px;
+      }
+    }
+    .min-h {
+      label {
+        min-height: auto;
+      }
+    }
+  }
+  .bi-bespoke__txt {
+    font-size: 54px;
+    line-height: 62px;
   }
 }
 
@@ -202,6 +289,24 @@
     }
     &__img {
       width: 70%;
+    }
+  }
+  .bi-feedback {
+    .bi-bespoke__img {
+      width: 70%;
+    }
+    .bi-input-out {
+      flex-direction: column;
+      gap: 0;
+    }
+    .bi-input {
+      width: calc(100% - 16px);
+    }
+    .min-h label {
+      min-height: auto;
+    }
+    .bi-bespoke__newform {
+      padding-top: 22px;
     }
   }
 }
@@ -246,6 +351,20 @@
       .bi-input input {
         width: 100% !important;
       }
+    }
+  }
+  .bi-feedback {
+    padding: 24px 0;
+    .bi-bespoke__img {
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .bi-input-out {
+      flex-direction: column;
+      gap: 0;
+    }
+    .bi-input {
+      width: calc(100% - 16px);
     }
   }
 }
