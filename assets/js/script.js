@@ -539,28 +539,6 @@ $('.modal-owl').owlCarousel({
 });
 
 
-//FLOATING BAR
-var windowWidth = $(window).width();
-$(window).scroll(function () {
-  var scroll = $(window).scrollTop();
-  if (scroll >= 50 && windowWidth > 767) {
-      $("#header").addClass("menu-bar");
-      $("#sec-nav").addClass("sec-scroll");
-      $(".menu-icon").addClass("showing");
-      $(".sec-menu").addClass("hide");
-  } else if (windowWidth > 767) {
-      $("#header").removeClass("menu-bar");
-      $("#sec-nav").removeClass("sec-scroll");
-      $(".dropdown").removeClass("show");
-      $(".menu-icon").removeClass("showing");
-      $(".sec-menu").removeClass("hide");
-  }
-
-});
-
-
-
-
 
 
 ///carousel touch enable
@@ -578,26 +556,6 @@ $(".carousel").on("touchstart", function (event) {
       $(this).off("touchmove");
   });
 });
-
-
-
-
-//// CLOSE NAVBAR TOOGLE AFTER CLICK IN MOBILE
-//if (jQuery(window).width() < 960) {
-//    jQuery('.navbar-collapse a').click(function(e) {
-//        if (jQuery(e.target).is('a') && jQuery(e.target).attr('class') != 'dropdown-toggle') {
-//            jQuery('.navbar-collapse').collapse('toggle');
-//        }
-//    });
-//}
-
-
-$(document).ready(function () {
-  $('.menu-icon').click(function () {
-      $('.sec-menu').toggleClass("sec-menu-show");
-
-  });
-})
 
 
 
@@ -659,14 +617,6 @@ $('.search-stick').each(function () {
   }).blur(onBlur);
   onBlur();
 });
-
-
-/// DROPDOWN HOVER ENABLE
-/*$('.sec-menu .dropdown').hover(function() {
-  $(this).find('.dropdown-menu').delay(0).fadeIn(300);
-}, function() {
-  $(this).find('.dropdown-menu').delay(0).fadeOut(100);
-});*/
 
 
 ////LIST AND GRID VIEW
