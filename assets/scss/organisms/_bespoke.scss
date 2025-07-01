@@ -235,6 +235,7 @@
   .bi-btn {
     margin-left: 0;
     margin-top: 16px;
+    width: 120px;
   }
 }
 /* ------------ */
@@ -274,6 +275,18 @@
     line-height: 62px;
   }
 }
+
+/* req - support */
+.bi-reqsuprt {
+  .bi-bespoke__img {
+    background-color: #e0e1f6;
+  }
+  .bi-bespoke__txt {
+    font-size: 46px;
+    line-height: 56px;
+  }
+}
+/* ----------- */
 
 @include tablet {
   .bi-bespoke {
