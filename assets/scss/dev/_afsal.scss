@@ -885,14 +885,14 @@
       display: none;
    }
 
-   input[type="radio"]:checked + .custom-radio {
+   input[type="radio"]:checked + label {
       background-color: #00c389; /* green shade */
       color: white;
       border-color: #00c389;
       position: relative;
    }
 
-   input[type="radio"]:checked + .custom-radio::after {
+   input[type="radio"]:checked + label::after {
       content: "✓";
       position: absolute;
       top: 8px;
@@ -902,7 +902,7 @@
    }
 }
 
-.custom-radio {
+.custom-radio label {
    border: 2px solid #ccc;
    padding: 10px 20px;
    border-radius: 8px;
@@ -913,4 +913,5 @@
    font-size: 14px;
    background-color: white;
    color: #333;
+   margin-right: 10px;
 }
