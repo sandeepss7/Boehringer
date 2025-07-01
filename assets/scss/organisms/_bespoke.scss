@@ -285,6 +285,14 @@
     font-size: 46px;
     line-height: 56px;
   }
+  .bi-bespoke__newform {
+    .min-h label {
+      min-height: 53px;
+    }
+  }
+  .bi-bespoke__outer {
+    align-items: flex-start;
+  }
 }
 /* ----------- */
 
