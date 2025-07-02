@@ -915,6 +915,12 @@
    color: #333;
    margin-right: 10px;
 }
+
+.custom-radio label.disable {
+   background-color: #e5e5e5;
+   color: #828282;
+   cursor: not-allowed;
+}
 .bi-varHead {
    font-size: 14px;
    color: var(--primary-clr);
