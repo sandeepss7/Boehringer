@@ -887,7 +887,7 @@
 
    input[type="radio"]:checked + label {
       background-color: var(--secondary-clr);
-      color: white;
+      color: var(--primary-clr);
       border-color: var(--secondary-clr);
       position: relative;
    }
@@ -895,7 +895,7 @@
    input[type="radio"]:checked + label::after {
       content: "✓";
       position: absolute;
-      top: 8px;
+      top: 6px;
       right: 5px;
       font-weight: bold;
       font-size: 14px;
@@ -904,7 +904,7 @@
 
 .custom-radio label {
    border: 2px solid #ccc;
-   padding: 10px 20px;
+   padding: 8px 20px 8px 14px;
    border-radius: 8px;
    cursor: pointer;
    transition: all 0.3s ease;
