@@ -1,3 +1,35 @@
+/* date timer */
+// function startCountdown(targetDate) {
+//     const demo = document.getElementById('demo');
+
+//     function updateTimer() {
+//         const now = new Date().getTime();
+//         let distance = targetDate - now;
+
+//         if (distance < 0) {
+//             // If target date passed, restart countdown (optional behavior)
+//             targetDate = new Date().getTime() + 1000 * 60 * 60 * 24 * 365; // Example: reset to 1 year from now
+//             distance = targetDate - now;
+//         }
+
+//         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+//         demo.innerText = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+//     }
+
+//     updateTimer(); // Run immediately
+//     setInterval(updateTimer, 1000);
+// }
+
+// // Set your target date here (example: 391 days from now)
+// const futureDate = new Date().getTime() + 391 * 24 * 60 * 60 * 1000 + 7 * 60 * 60 * 1000 + 25 * 60 * 1000 + 11 * 1000;
+// startCountdown(futureDate);
+
+/* --------------------------------- */
+
 // script for the pop-up page "bi-newmodal"
 document.addEventListener('DOMContentLoaded', function() {
     // Configuration using IDs from your HTML
@@ -937,4 +969,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // table scroll text script ends
+
+
 
