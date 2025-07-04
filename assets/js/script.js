@@ -28,6 +28,34 @@
 // const futureDate = new Date().getTime() + 391 * 24 * 60 * 60 * 1000 + 7 * 60 * 60 * 1000 + 25 * 60 * 1000 + 11 * 1000;
 // startCountdown(futureDate);
 
+
+window.onload = function () {
+    var targetDate = "2031-09-23";
+    console.log("Target Date:", targetDate);
+    var countDownDate = new Date(targetDate).getTime();
+
+    var timerDisplay = document.getElementById("demo");
+
+    var x = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        if (distance < 0) {
+            countDownDate = new Date().getTime() + (1 * 60 * 60 * 1000);
+            distance = countDownDate - now;
+        }
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timerDisplay.innerHTML = days + "d : " + hours + "h : "
+            + minutes + "m : " + seconds + "s ";
+
+        timerDisplay.style.display = "block";
+    }, 1000);
+};
 /* --------------------------------- */
 
 // script for the pop-up page "bi-newmodal"

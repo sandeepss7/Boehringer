@@ -1,47 +1,26 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title> 
-    <style>
-      .cx-timer {
-        font-size: 24px;
-        color: black;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Timer</title>
+  <style>
+    .cx-timer {
+      font-size: 24px;
+      color: black;
+      display: none; /* Hide initially */
+    }
+  </style>
+</head>
+<body>
 
-    <input type="hidden" id="hdnEndDate" value="2025-07-05T12:00:00" />
+<div id="demo" class="cx-timer"></div>
 
-    <div id="demo" class="cx-timer">Loading...</div>
 
-    <script>
-      // Get the date from hidden field
-      var data = document.getElementById('hdnEndDate').value;
-      console.log("End Date:", data);
-      var countDownDate = new Date(data).getTime();
-
-      var x = setInterval(function () {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-
-        // If countdown is over, reset to another 1 hour
-        if (distance < 0) {
-          countDownDate = new Date().getTime() + (1 * 60 * 60 * 1000); 
-          distance = countDownDate - now;
-        }
-
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("demo").innerHTML = days + "d : " + hours + "h : " 
-          + minutes + "m : " + seconds + "s ";
-      }, 1000);
-    </script>
-    
-  </body>
+ <script src="../assets/js/jquery.slim.min.js"></script>
+    <script src="../assets/js/aos.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
 </html>
