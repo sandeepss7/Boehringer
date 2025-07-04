@@ -916,6 +916,10 @@
    margin-right: 10px;
 }
 
+.custom-radio td {
+   padding-top: 10px;
+}
+
 .custom-radio.disable label {
    background-color: #e5e5e5;
    color: #828282;
@@ -923,7 +927,7 @@
 .bi-varHead {
    font-size: 14px;
    color: var(--primary-clr);
-   margin: 10px 0;
+   margin: 16px 0 0;
    font-weight: 900;
    display: inline-flex;
 }
