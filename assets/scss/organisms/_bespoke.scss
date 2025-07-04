@@ -162,7 +162,6 @@
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
           rgba(61, 59, 53, 0.16) 0px 0px 0px 1px,
           rgba(61, 59, 53, 0.08) 0px 2px 5px 0px;
-        border: 0px;
       }
     }
   }
@@ -203,6 +202,12 @@
       &::after {
         content: "";
       }
+    }
+    textarea {
+      width: 100%;
+      border-radius: 6px;
+      padding: 10px 4px;
+      border: 1px solid #ccc;
     }
   }
   .min-h {
@@ -255,13 +260,10 @@
       margin-bottom: 16px;
 
       textarea {
-        width: 100%;
-        border-radius: 6px;
-        padding: 10px 4px;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
-          rgba(61, 59, 53, 0.16) 0px 0px 0px 1px,
-          rgba(61, 59, 53, 0.08) 0px 2px 5px 0px;
-        border: 0px;
+      width: 100%;
+      border-radius: 6px;
+      padding: 10px 4px;
+      border: 1px solid #ccc;
       }
     }
     .min-h {
