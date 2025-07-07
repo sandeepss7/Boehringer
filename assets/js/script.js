@@ -1,61 +1,37 @@
 /* date timer */
-// function startCountdown(targetDate) {
-//     const demo = document.getElementById('demo');
 
-//     function updateTimer() {
-//         const now = new Date().getTime();
-//         let distance = targetDate - now;
-
-//         if (distance < 0) {
-//             // If target date passed, restart countdown (optional behavior)
-//             targetDate = new Date().getTime() + 1000 * 60 * 60 * 24 * 365; // Example: reset to 1 year from now
-//             distance = targetDate - now;
-//         }
-
-//         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-//         demo.innerText = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-//     }
-
-//     updateTimer(); // Run immediately
-//     setInterval(updateTimer, 1000);
-// }
-
-// // Set your target date here (example: 391 days from now)
-// const futureDate = new Date().getTime() + 391 * 24 * 60 * 60 * 1000 + 7 * 60 * 60 * 1000 + 25 * 60 * 1000 + 11 * 1000;
-// startCountdown(futureDate);
-
-
-window.onload = function () {
-    var targetDate = "2031-09-23";
-    console.log("Target Date:", targetDate);
-    var countDownDate = new Date(targetDate).getTime();
-
-    var timerDisplay = document.getElementById("demo");
-
+ 
+    // Set the date we're counting down to
+    var data = document.getElementById('<%= hdnEndDate.ClientID %>').value;
+    console.log(data);
+    var countDownDate = new Date(data).getTime();
+ 
+    // Update the count down every 1 second
     var x = setInterval(function () {
+ 
+        // Get today's date and time
         var now = new Date().getTime();
+ 
+        // Find the distance between now and the count down date
         var distance = countDownDate - now;
-
-        if (distance < 0) {
-            countDownDate = new Date().getTime() + (1 * 60 * 60 * 1000);
-            distance = countDownDate - now;
-        }
-
+ 
+        // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        timerDisplay.innerHTML = days + "d : " + hours + "h : "
+ 
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d : " + hours + "h : "
             + minutes + "m : " + seconds + "s ";
-
-        timerDisplay.style.display = "block";
+ 
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
     }, 1000);
-};
+
 /* --------------------------------- */
 
 // script for the pop-up page "bi-newmodal"
