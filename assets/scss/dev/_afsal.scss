@@ -934,8 +934,10 @@
 }
 .bi-additem {
    color: var(--primary-clr);
-   font-size: 18px;
+   font-size: 20px;
    font-weight: 600;
+   display: block;
+   text-align: center;
    margin-left: 16px;
 }
 .bi-varselect {
