@@ -5,7 +5,6 @@
    &__outer {
       display: flex;
       gap: 20px;
-      padding-bottom: 12%;
       align-items: flex-start;
       width: 100%;
    }
@@ -219,11 +218,12 @@
          border-radius: 6px;
          padding: 10px 4px;
          border: 1px solid #ccc;
+         margin-top: 10px;
       }
    }
    .min-h {
       label {
-         min-height: 59px;
+         min-height: 44px;
       }
    }
    &__newform {
