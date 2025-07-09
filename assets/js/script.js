@@ -346,32 +346,61 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
     const checkboxes = document.querySelectorAll('.terms-checkbox input[type="checkbox"]');
     const checkoutLink = document.getElementById('lblSCProceedTo');
-  
+
+    // If either element is not found, exit to avoid errors.
+    if (!checkoutLink || checkboxes.length === 0) {
+        console.error("Required elements (checkboxes or checkout link) not found.");
+        return;
+    }
+
+    /**
+     * Checks if all checkboxes are checked and updates the checkout link's state.
+     */
     function updateLinkState() {
-        const bothChecked = [...checkboxes].every(checkbox => checkbox.checked);
-        
-        if(bothChecked) {
+        // '.every' returns true if all checkboxes in the array pass the test.
+        const allChecked = [...checkboxes].every(checkbox => checkbox.checked);
+
+        if (allChecked) {
             checkoutLink.classList.remove('disabled');
             checkoutLink.classList.add('active');
-            checkoutLink.href = "javascript:__doPostBack('ctl16$lblSCProceedTo','')"; 
+            // Set the href to allow the postback to occur.
+            checkoutLink.href = "javascript:__doPostBack('ctl16$lblSCProceedTo','')";
         } else {
             checkoutLink.classList.add('disabled');
             checkoutLink.classList.remove('active');
+            // Remove the href to prevent clicking.
             checkoutLink.removeAttribute('href');
         }
     }
-  
+
+    /**
+     * Prevents the default click action if the link is disabled.
+     * @param {Event} e The click event.
+     */
+    function handleLinkClick(e) {
+        if (checkoutLink.classList.contains('disabled')) {
+            e.preventDefault();
+        }
+    }
+
+    // --- Event Listeners ---
+
+    // 1. Listen for page load (for initial load and non-cached reloads).
+    // This is kept for robustness.
+    updateLinkState();
+
+    // 2. Listen for 'pageshow' event (handles back/forward navigation).
+    // This is the key fix for your issue. It runs every time the page is displayed.
+    window.addEventListener('pageshow', updateLinkState);
+
+    // 3. Listen for changes on each checkbox.
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateLinkState);
     });
-  
-    // Optional: Prevent default action even if someone tries to click disabled link
-    checkoutLink.addEventListener('click', (e) => {
-        if(checkoutLink.classList.contains('disabled')) {
-            e.preventDefault();
-        }
-    });
-  });
+
+    // 4. Listen for clicks on the checkout link to prevent navigation when disabled.
+    checkoutLink.addEventListener('click', handleLinkClick);
+});
   
 //PRODUCT HOVER ANIMATION
 //$(".product-box").hover(function() {
@@ -939,6 +968,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // table scroll text script ends
-
-
-
