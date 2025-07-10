@@ -947,24 +947,61 @@ document.addEventListener('click', (event) => {
 // table scroll text script starts
 
 document.addEventListener('DOMContentLoaded', function() {
-  const scrollableTables = document.querySelectorAll('.bi-tbl__scroll'); // Select ALL scrollable tables
-  const scrollIndicators = document.querySelectorAll('.scroll-indicator'); // Select ALL indicators
+    // This function finds all scrollable tables and sets up their indicators.
+    const setupScrollIndicators = () => {
+        const scrollableTables = document.querySelectorAll('.bi-tbl__scroll');
+        const scrollIndicators = document.querySelectorAll('.scroll-indicator');
 
-  // Assuming a one-to-one correspondence between tables and indicators
-  scrollableTables.forEach((table, index) => {
-      const indicator = scrollIndicators[index]; // Get corresponding indicator
+        // Assuming a one-to-one correspondence between tables and indicators
+        scrollableTables.forEach((table, index) => {
+            // Prevents re-adding listeners to tables that already have them
+            if (table.dataset.scrollIndicatorAttached) {
+                return;
+            }
 
-      function checkScroll() {
-          if (table.scrollWidth > table.clientWidth) {
-              indicator.classList.add('show-scroll-indicator');
-          } else {
-              indicator.classList.remove('show-scroll-indicator');
-          }
-      }
+            const indicator = scrollIndicators[index];
+            if (!indicator) return; // Exit if no corresponding indicator is found
 
-      checkScroll();
-      window.addEventListener('resize', checkScroll); // Consider if resize applies to each table individually or window
-  });
+            function checkScroll() {
+                if (table.scrollWidth > table.clientWidth) {
+                    indicator.classList.add('show-scroll-indicator');
+                } else {
+                    indicator.classList.remove('show-scroll-indicator');
+                }
+            }
+
+            // Initial check
+            checkScroll();
+
+            // Check on window resize
+            window.addEventListener('resize', checkScroll);
+            
+            // Mark this table as having its indicator logic attached
+            table.dataset.scrollIndicatorAttached = 'true';
+        });
+    };
+
+    // Run the setup on initial page load
+    setupScrollIndicators();
+
+    // --- The Fix: Using MutationObserver ---
+    // Create an observer to watch for changes in the DOM
+    const observer = new MutationObserver((mutations) => {
+        // We run the setup again if new nodes were added
+        for (const mutation of mutations) {
+            if (mutation.addedNodes.length) {
+                setupScrollIndicators();
+                break; // No need to check other mutations if we already ran the setup
+            }
+        }
+    });
+
+    // Start observing the entire body of the document for added elements (childList)
+    // and changes in the subtree.
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 });
 
 // table scroll text script ends
