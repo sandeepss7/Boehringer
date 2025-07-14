@@ -344,12 +344,27 @@ document.addEventListener('DOMContentLoaded', function() {
   // script ends for the pop-up page "bi-newmodal"
 // checkout button disabled script
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize the script on the first full page load.
+    initializeTermsAndConditions();
+
+    // Add a handler to re-initialize after any ASP.NET partial postback (UpdatePanel refresh).
+    if (typeof Sys !== 'undefined' && Sys.WebForms && Sys.WebForms.PageRequestManager) {
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initializeTermsAndConditions);
+    }
+});
+
+/**
+ * Finds all relevant elements and attaches the necessary event listeners.
+ * This function is designed to be called on initial load and after any AJAX update.
+ */
+function initializeTermsAndConditions() {
     const checkboxes = document.querySelectorAll('.terms-checkbox input[type="checkbox"]');
     const checkoutLink = document.getElementById('lblSCProceedTo');
 
-    // If either element is not found, exit to avoid errors.
+    // If elements aren't found, simply exit. This can happen during a partial update
+    // if the controls are not part of the updated content.
     if (!checkoutLink || checkboxes.length === 0) {
-        console.error("Required elements (checkboxes or checkout link) not found.");
+        // console.error("Required T&C elements not found during initialization.");
         return;
     }
 
@@ -357,13 +372,13 @@ document.addEventListener('DOMContentLoaded', () => {
      * Checks if all checkboxes are checked and updates the checkout link's state.
      */
     function updateLinkState() {
-        // '.every' returns true if all checkboxes in the array pass the test.
+        // The spread operator [...] converts the NodeList to an array to use .every()
         const allChecked = [...checkboxes].every(checkbox => checkbox.checked);
 
         if (allChecked) {
             checkoutLink.classList.remove('disabled');
             checkoutLink.classList.add('active');
-            // Set the href to allow the postback to occur.
+            // Restore the postback link.
             checkoutLink.href = "javascript:__doPostBack('ctl16$lblSCProceedTo','')";
         } else {
             checkoutLink.classList.add('disabled');
@@ -385,22 +400,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Event Listeners ---
 
-    // 1. Listen for page load (for initial load and non-cached reloads).
-    // This is kept for robustness.
-    updateLinkState();
-
-    // 2. Listen for 'pageshow' event (handles back/forward navigation).
-    // This is the key fix for your issue. It runs every time the page is displayed.
-    window.addEventListener('pageshow', updateLinkState);
-
-    // 3. Listen for changes on each checkbox.
+    // 1. Listen for changes on each checkbox.
     checkboxes.forEach(checkbox => {
+        // It's good practice to remove old listeners before adding new ones,
+        // though in this setup it's less of an issue.
+        checkbox.removeEventListener('change', updateLinkState);
         checkbox.addEventListener('change', updateLinkState);
     });
 
-    // 4. Listen for clicks on the checkout link to prevent navigation when disabled.
+    // 2. Listen for clicks on the checkout link.
+    checkoutLink.removeEventListener('click', handleLinkClick);
     checkoutLink.addEventListener('click', handleLinkClick);
-});
+    
+    // 3. Listen for the pageshow event for back/forward browser navigation.
+    // This is a good fallback.
+    window.addEventListener('pageshow', updateLinkState);
+
+    // 4. Immediately update the link state on initialization.
+    // This correctly sets the button state on page load or after an update.
+    updateLinkState();
+}
   
 //PRODUCT HOVER ANIMATION
 //$(".product-box").hover(function() {
