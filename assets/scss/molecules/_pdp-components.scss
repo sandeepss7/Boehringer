@@ -186,12 +186,6 @@
       margin: 0px 6px;
    }
 
-   &__pdttotalsec {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-   }
-
    &__pdtshipnginfo {
       color: #54565a;
       font-size: 11px;
@@ -200,8 +194,8 @@
 
    &__pdttotalcost {
       color: var(--primary-clr);
-      font-size: 11px;
-      line-height: 11px;
+      font-size: 12px;
+      line-height: 12px;
       font-weight: 300;
       display: inline-flex;
 

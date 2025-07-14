@@ -145,7 +145,6 @@
       border-radius: 10px;
 
       .bi-input {
-         margin-bottom: 36px;
          label {
             font-size: 16px;
             color: #37352f;
@@ -194,6 +193,9 @@
       .lucide-arrow-right {
          transform: translateY(2px);
       }
+   }
+   .bi-input.captcha-box {
+      margin-bottom: 0 !important;
    }
 }
 
