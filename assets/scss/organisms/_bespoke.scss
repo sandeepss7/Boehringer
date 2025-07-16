@@ -19,7 +19,7 @@
    &__img {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
       margin-bottom: 60%;
       width: 33%;
       padding: 0px 24px;
@@ -255,7 +255,7 @@
    }
    .bi-btn {
       margin-left: 0;
-      width: 120px;
+      width: 160px;
    }
 }
 /* ------------ */

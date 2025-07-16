@@ -2714,6 +2714,7 @@
 .cx-copdt {
   display: flex;
   margin-bottom: 24px;
+  align-items: flex-start;
 }
 
 .cx-copdt__outer {
@@ -2755,7 +2756,7 @@
 }
 
 .cx-copdt__img {
-  width: 70px;
+  width: 60px;
   height: auto;
   margin-right: 16px;
 }
