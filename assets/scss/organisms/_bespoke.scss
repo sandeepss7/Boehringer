@@ -149,7 +149,8 @@
             color: #37352f;
             font-weight: 600;
             position: relative;
-            margin-bottom: 0;
+            margin-bottom: 5px;
+            padding-bottom: 0;
             &::after {
                content: "*";
                position: absolute;
@@ -196,6 +197,12 @@
    .bi-input.captcha-box {
       margin-bottom: 0 !important;
    }
+   .bi-input {
+      input,
+      select {
+         margin-top: 0;
+      }
+   }
 }
 
 /* feedback page 27-06-2025 */
@@ -219,7 +226,6 @@
          border-radius: 6px;
          padding: 10px 4px;
          border: 1px solid #ccc;
-         margin-top: 10px;
       }
    }
    .min-h {
@@ -282,7 +288,6 @@
             border-radius: 6px;
             padding: 10px 4px;
             border: 1px solid #ccc;
-            margin-top: 10px;
          }
       }
       .min-h {
