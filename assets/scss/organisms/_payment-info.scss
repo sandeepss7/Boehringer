@@ -32,15 +32,17 @@
     }
 
     &__message {
-        display: flex;
+        display: inline;
         color: var(--secondary-clr); 
         font-size: 48px;
         font-weight: 600;
         line-height: 58px;
         flex-wrap: wrap;
+        vertical-align: baseline;
 
         span {
             color: #fff;
+            vertical-align: baseline;
         }
     }
 }
