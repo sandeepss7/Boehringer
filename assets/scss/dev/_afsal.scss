@@ -879,6 +879,7 @@
 }
 .custom-radio-group {
    display: flex;
+   align-items: center;
    gap: 10px;
 
    input[type="radio"] {
@@ -936,6 +937,12 @@
    font-weight: 600;
    display: inline-flex;
    gap: 14px;
+   position: relative;
+
+   a {
+      position: absolute;
+      top: 4px;
+   }
 }
 .bi-additem {
    color: var(--primary-clr);
