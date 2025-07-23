@@ -1,4 +1,30 @@
+document.addEventListener('DOMContentLoaded', () => {
 
+    // ALL of your code MUST be inside this wrapper function
+    
+    const stickyEl = document.querySelector('.bi-pdpcr');
+    const footerEl = document.querySelector('.bi-footer');
+
+    // The check now runs correctly after the elements are loaded
+    if (!stickyEl || !footerEl) {
+        console.error("This error shouldn't appear if the classes are correct.");
+        return;
+    }
+
+    const initialTopOffset = 20;
+
+    window.addEventListener('scroll', () => {
+        const footerTop = footerEl.getBoundingClientRect().top + window.scrollY;
+        const stickyElBottom = window.scrollY + stickyEl.offsetHeight + initialTopOffset;
+
+        if (stickyElBottom >= footerTop) {
+            stickyEl.style.top = '-140px';
+        } else {
+            stickyEl.style.top = `${initialTopOffset}px`;
+        }
+    });
+
+});
 
 // script for the pop-up page "bi-newmodal"
 document.addEventListener('DOMContentLoaded', function() {
