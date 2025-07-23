@@ -29,7 +29,7 @@
       padding: 24px 24px 4px;
    }
    &__head {
-      font-family: 'Boehringer Forward Text';
+      font-family: "Boehringer Forward Text";
       color: #fff;
       background-color: var(--primary-clr);
       font-size: 26px;
@@ -43,18 +43,20 @@
       flex-direction: column;
       width: calc(50% - 16px);
       margin-bottom: 20px;
-      label, span {
+      label,
+      span {
          font-size: 18px;
          font-weight: 600;
          color: var(--primary-clr);
          margin-bottom: 6px;
       }
-      input, select {
+      input,
+      select {
          border: 1px solid #ccc;
          border-radius: 4px;
          height: 40px;
          padding: 8px;
-         color: #54565A;
+         color: #54565a;
       }
       textarea {
          resize: none;
@@ -65,7 +67,7 @@
       }
    }
    &__img {
-      box-shadow: 0px 1px 6.6px 0px #0000001A;
+      box-shadow: 0px 1px 6.6px 0px #0000001a;
       width: 30%;
       margin-bottom: 20px;
       border-radius: 12px;
@@ -86,7 +88,7 @@
             text-decoration: underline !important;
             font-weight: 600;
             &:hover {
-                text-decoration: none!important;
+               text-decoration: none !important;
             }
          }
       }
@@ -95,20 +97,25 @@
          width: 18px;
          background-color: #f6f5f3;
          border: 2px solid var(--primary-clr);
-       }
-       input[type="checkbox"]:checked {
+      }
+      input[type="checkbox"]:checked {
          background-color: var(--primary-clr);
-       }
+      }
    }
    &__cbwrap {
       display: flex;
       align-items: center;
    }
    &__placeodr {
-      width: 22%;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      a {
+         width: auto;
+      }
    }
    &__helptxt {
-      font-family: 'Boehringer Forward Head Md';
+      font-family: "Boehringer Forward Head Md";
       color: #000;
       margin: 22px 0 8px;
    }
@@ -117,20 +124,20 @@
       a {
          position: relative;
          &::after {
-           content: "";
-           background-color: var(--secondary-clr);
-           width: 98%;
-           height: 2px;
-           position: absolute;
-           bottom: -2px;
-           left: 4px;
+            content: "";
+            background-color: var(--secondary-clr);
+            width: 98%;
+            height: 2px;
+            position: absolute;
+            bottom: -2px;
+            left: 4px;
          }
-         &:hover{
-           &::after{
-             width: 0;
-           }
+         &:hover {
+            &::after {
+               width: 0;
+            }
          }
-       }
+      }
    }
    &__btn {
       background-color: var(--secondary-clr);
@@ -140,7 +147,7 @@
       text-align: center;
       border: 1px solid var(--secondary-clr);
       border-radius: 4px;
-      padding: 10px 0px;
+      padding: 10px 24px;
       margin-top: 26px;
       transition: 0.3s all;
       &:hover {
@@ -148,6 +155,9 @@
          color: var(--primary-clr);
          cursor: pointer;
          border: 1px solid var(--fourth-clr);
+      }
+      .bi-paymentinfo & {
+         width: auto;
       }
    }
    .bi-dollar {
