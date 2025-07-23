@@ -1,6 +1,7 @@
 .bi-pdpdtls {
    &__varientinfowrap {
       padding: 16px;
+      margin-left: -16px;
       background-color: #fff;
       border-radius: 10px;
       width: max-content;
@@ -12,16 +13,22 @@
       flex-direction: column;
       width: 50%;
    }
+   &__shpmntfield {
+      margin-bottom: 20px;
+   }
    &__varqnttyfield {
       width: 100%;
    }
 
    &__varqnttylabl,
    &__shpmntlabl {
-      font-size: 14px;
+      font-size: 18px;
       color: var(--primary-clr);
-      font-weight: 900;
-      padding: 12px 0;
+      font-weight: 600;
+      padding-bottom: 12px;
+   }
+   &__shpmntlabl {
+      padding: 20px 0 12px;
    }
 
    &__fieldswrap {
@@ -73,8 +80,9 @@
 
       .bi-btn2,
       .bi-btn {
-         width: 100%;
+         width: auto;
          margin: 0;
+         padding: 10px 32px;
       }
    }
 
