@@ -2,7 +2,6 @@
    &__varientinfowrap {
       padding: 16px;
       margin-left: -16px;
-      background-color: #fff;
       border-radius: 10px;
       width: max-content;
    }
@@ -77,12 +76,12 @@
    &__btngroup {
       display: flex;
       justify-content: space-between;
-      width: 100%;
+      width: 84%;
       gap: 20px;
 
       .bi-btn2,
       .bi-btn {
-         width: auto;
+         width: 100%;
          margin: 0;
          padding: 10px 32px;
       }
