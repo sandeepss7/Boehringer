@@ -927,10 +927,21 @@
 }
 
 .custom-radio.disable label {
-   opacity: 0.4;
-   cursor: not-allowed;
    background-color: #e5e5e5;
    color: #828282;
+}
+.custom-radio.inactive {
+   label {
+      border-color: var(--primary-clr) !important;
+      opacity: 0.4;
+      cursor: not-allowed;
+      background-color: #e5e5e5 !important;
+      color: #828282 !important;   
+
+      &::after {
+         background-image: none !important;
+      }
+   }
 }
 .bi-varHead {
    font-size: 14px;
