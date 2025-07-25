@@ -1741,6 +1741,11 @@
       float: right;
       transform: translateY(-30px);
    }
+    .bi-infoout {
+         display: flex;
+         align-items: baseline;
+         gap: 6px;
+      }
 }
 
 .bi-loginbtn {
@@ -1925,7 +1930,7 @@
          }
       }
 
-      
+     
    }
    .headerspacer {
       height: 220px !important;
