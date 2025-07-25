@@ -927,6 +927,8 @@
 }
 
 .custom-radio.disable label {
+   opacity: 0.4;
+   cursor: not-allowed;
    background-color: #e5e5e5;
    color: #828282;
 }
