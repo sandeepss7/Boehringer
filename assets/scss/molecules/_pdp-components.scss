@@ -97,8 +97,9 @@
       overflow-x: hidden;
       gap: 20px;
       padding-top: 10px;
-      padding-right: 20px;
-      margin-right: -40px;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: -40px; 
       position: relative;
 
       &::-webkit-scrollbar {
@@ -227,11 +228,11 @@
 
    &__ttlchart {
       background-color: #fff;
-      box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+      // box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
       border-radius: 10px;
       padding: 20px;
       margin-top: 30px;
-      margin-right: -20px;
+      // margin-right: -20px;
    }
 
    &__ttlchartitem {
