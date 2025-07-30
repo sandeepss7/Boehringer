@@ -12,9 +12,6 @@
       flex-direction: column;
       width: 50%;
    }
-   &__shpmntfield {
-      margin-bottom: 20px;
-   }
    &__varqnttyfield {
       width: 100%;
    }
@@ -25,6 +22,9 @@
       color: var(--primary-clr);
       font-weight: 600;
       padding-bottom: 12px;
+   }
+   &__varqnttylabl {
+      margin-top: 20px;
    }
    &__shpmntlabl {
       padding: 20px 0 12px;
