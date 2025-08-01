@@ -936,7 +936,7 @@
       opacity: 0.4;
       cursor: not-allowed;
       background-color: #e5e5e5 !important;
-      color: #828282 !important;   
+      color: #828282 !important;
 
       &::after {
          background-image: none !important;
@@ -991,6 +991,11 @@
    transition: top 0.2s ease;
 }
 .bi-selectitem {
+   color: var(--primary-clr);
+   font-size: 20px;
+   font-weight: 600;
+   display: block;
+   text-align: center;
    border-bottom: 1px solid #c6c6c6;
    margin: 0;
    background-color: #fff;
