@@ -991,14 +991,27 @@
    transition: top 0.2s ease;
 }
 .bi-selectitem {
-   color: var(--primary-clr);
    font-size: 20px;
    font-weight: 600;
-   display: block;
    text-align: center;
-   border-bottom: 1px solid #c6c6c6;
    margin: 0;
-   background-color: #fff;
-   padding: 7px 0;
-   border-radius: 10px;
+   background-color: var(--secondary-clr);
+    color: var(--primary-clr);
+    border-color: var(--secondary-clr);
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 14px;
+    border-radius: 4px;
+    transition: all 0.2s 0s ease-in;
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
+
+    &:hover {
+      background-color: var(--fourth-clr);
+  border-color: var(--fourth-clr);
+  text-decoration: none;
+  color: var(--primary-clr);
+  transition: all 0.2s 0s ease-in;
+    }
 }
