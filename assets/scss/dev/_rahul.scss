@@ -799,3 +799,58 @@
     }
 }
 
+// 14-08-25 Shoppingcart 
+
+.boehringer {
+    .cx-shpingcart {
+        .cx-shpcart__outer {
+            .cx-shpcartpdt {
+                .cx-shpcartpdt__wrap {
+                    width: 26%;
+                }
+            }
+        }
+    }
+}
+
+@include tablet-pro {
+    .boehringer {
+        .cx-shpingcart {
+            .bi-shpcarttitle {
+                    &__a {
+                        width: 42%;
+                    }
+                }
+        }
+    }
+}
+
+@include tablet {
+    .boehringer {
+        .cx-shpingcart {
+            .bi-shpcarttitle {
+                    &__a {
+                        width: 48%;
+                    }
+                }
+        }
+    }
+}
+
+@include mobile {
+    .boehringer {
+        .cx-shpingcart {
+            .cx-shpcart__outer {
+                min-width: 620px;
+
+                .bi-shpcarttitle {
+                    &__a {
+                        width: 55%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
