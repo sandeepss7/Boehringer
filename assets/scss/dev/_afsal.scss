@@ -996,22 +996,25 @@
    text-align: center;
    margin: 0;
    background-color: var(--secondary-clr);
-    color: var(--primary-clr);
-    border-color: var(--secondary-clr);
-    font-size: 14px;
-    line-height: 20px;
-    padding: 10px 14px;
-    border-radius: 4px;
-    transition: all 0.2s 0s ease-in;
-    display: inline-block;
-    margin-bottom: 10px;
-    width: 100%;
+   color: var(--primary-clr);
+   border-color: var(--secondary-clr);
+   font-size: 14px;
+   line-height: 20px;
+   padding: 10px 14px;
+   border-radius: 4px;
+   transition: all 0.2s 0s ease-in;
+   display: inline-block;
+   margin-bottom: 10px;
+   width: 100%;
 
-    &:hover {
+   &:hover {
       background-color: var(--fourth-clr);
-  border-color: var(--fourth-clr);
-  text-decoration: none;
-  color: var(--primary-clr);
-  transition: all 0.2s 0s ease-in;
-    }
+      border-color: var(--fourth-clr);
+      text-decoration: none;
+      color: var(--primary-clr);
+      transition: all 0.2s 0s ease-in;
+   }
+}
+.bi-product-desc span img {
+   margin-right: 8px;
 }
