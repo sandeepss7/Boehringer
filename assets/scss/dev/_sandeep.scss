@@ -1253,10 +1253,8 @@
     font-size: 13px;
     color: #000;
     font-weight: bold;
-
-    &:last-child {
-      margin-bottom: 20px;
-    }
+    margin-bottom: 20px;
+  
   }
   .bi-qntytext {
     padding-right: 100px;
@@ -1758,6 +1756,9 @@
     display: flex;
     align-items: baseline;
     gap: 6px;
+  }
+  .bi-ratestxt {
+    font-size: 12px;
   }
 }
 
