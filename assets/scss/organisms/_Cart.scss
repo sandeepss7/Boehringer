@@ -1,254 +1,258 @@
 .bi-shpcarttitle {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+   display: flex;
+   justify-content: space-around;
+   width: 100%;
 }
 .bi-shpcarttitle__a {
-  width: 39%;
-  font-size: 20px;
-  padding-left: 32px;
-  font-weight: 600;
-  color: var(--primary-clr);
+   // width: 39%;
+   flex: 2;
+   font-size: 20px;
+   padding-left: 32px;
+   font-weight: 600;
+   color: var(--primary-clr);
 }
 .bi-shpcarttitle__b,
 .bi-shpcarttitle__c,
 .bi-shpcarttitle__d,
 .bi-shpcarttitle__e {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--primary-clr);
-  text-align: center;
+   font-size: 20px;
+   font-weight: 700;
+   color: var(--primary-clr);
+   text-align: center;
 }
 .bi-shpcarttitle__b,
 .bi-shpcarttitle__d {
-  width: 20%;
+   // width: 20%;
+   flex: 1;
 }
 .bi-shpcarttitle__unit {
-  font-size: 10px;
-  margin-top: 4px;
+   font-size: 10px;
+   margin-top: 4px;
 }
 .bi-shpcarttitle__c {
-  width: 12%;
+   // width: 12%;
+   flex: 1;
 }
 .bi-shpcarttitle__e {
-  width: 10%;
-  padding-right: 12px;
+   // width: 10%;
+   flex: 0 0 70px;
+   padding-right: 12px;
 }
 .bi-shpcartpdt__unitprice {
-  color: var(--primary-clr);
-  text-align: center;
-  font-size: 16px;
-  width: 10%;
+   color: var(--primary-clr);
+   text-align: center;
+   font-size: 16px;
+   width: 10%;
 }
 .bi-ordersumrywrap {
-  background-color: #fff;
-  padding: 16px 16px 35px;
-  border-radius: 12px;
+   background-color: #fff;
+   padding: 16px 16px 35px;
+   border-radius: 12px;
 }
 .bi-ordrsumry__btn {
-  background-color: var(--primary-clr);
-  color: #fff;
-  width: 100%;
-  display: inline-block;
-  text-align: center;
-  border: 1px solid var(--primary-clr);
-  border-radius: 4px;
-  padding: 10px;
-  margin-top: 26px;
-  transition: 0.3s all;
-  &.cartbtn {
-    background-color: #ccfae5;
-    color: var(--primary-clr);
-    border: 1px solid #ccfae5;
-    &:hover {
-      background-color: var(--fourth-clr);
+   background-color: var(--primary-clr);
+   color: #fff;
+   width: 100%;
+   display: inline-block;
+   text-align: center;
+   border: 1px solid var(--primary-clr);
+   border-radius: 4px;
+   padding: 10px;
+   margin-top: 26px;
+   transition: 0.3s all;
+   &.cartbtn {
+      background-color: #ccfae5;
       color: var(--primary-clr);
-      border: 1px solid var(--fourth-clr);
-    }
-  }
-  &:hover {
-    background-color: var(--third-clr);
-    color: #fff;
-    cursor: pointer;
-    border: 1px solid var(--third-clr);
-  }
+      border: 1px solid #ccfae5;
+      &:hover {
+         background-color: var(--fourth-clr);
+         color: var(--primary-clr);
+         border: 1px solid var(--fourth-clr);
+      }
+   }
+   &:hover {
+      background-color: var(--third-clr);
+      color: #fff;
+      cursor: pointer;
+      border: 1px solid var(--third-clr);
+   }
 }
 .cx-shpingcart .cx-ordrsumry__item.total {
-  border-bottom: 0;
-  padding-bottom: 0;
+   border-bottom: 0;
+   padding-bottom: 0;
 }
 // .total .label {
 //   font-size: 18px !important;
 // }
 .bi-buttonswrap {
-  display: flex;
-  justify-content: flex-end;
+   display: flex;
+   justify-content: flex-end;
 }
 .bi-buttons {
-  width: 46%;
-  display: flex;
-  gap: 20px;
+   width: 46%;
+   display: flex;
+   gap: 20px;
 }
 // .bi-savebasket {
 //    margin-top: 32px;
 // }
 .bi-sbhead {
-  font-size: 18px;
-  font-weight: 600;
-  font-family: "Boehringer Forward Head";
-  color: var(--primary-clr);
-  margin-bottom: 16px;
+   font-size: 18px;
+   font-weight: 600;
+   font-family: "Boehringer Forward Head";
+   color: var(--primary-clr);
+   margin-bottom: 16px;
 }
 .bi-sbcopy {
-  font-size: 15px;
-  color: #000;
-  padding-right: 60px;
-  // width: 85%;
-  a {
-    position: relative;
-    color: var(--primary-clr);
-    &::after {
-      content: "";
-      background-color: var(--secondary-clr);
-      position: absolute;
-      height: 2px;
-      bottom: 0;
-      width: 100%;
-      left: 0;
-    }
-    &:hover {
+   font-size: 15px;
+   color: #000;
+   padding-right: 60px;
+   // width: 85%;
+   a {
+      position: relative;
+      color: var(--primary-clr);
       &::after {
-        width: 0;
+         content: "";
+         background-color: var(--secondary-clr);
+         position: absolute;
+         height: 2px;
+         bottom: 0;
+         width: 100%;
+         left: 0;
       }
-    }
-  }
+      &:hover {
+         &::after {
+            width: 0;
+         }
+      }
+   }
 }
 .bi-binputwrap {
-  width: 46%;
+   width: 46%;
 }
 .bi-w40 {
-  width: 40%;
+   width: 40%;
 }
 .bi-sqinput {
-  width: 100%;
-  height: 48px;
-  border: 1px solid #54565a;
-  border-radius: 4px;
+   width: 100%;
+   height: 48px;
+   border: 1px solid #54565a;
+   border-radius: 4px;
 }
 .cx-shpcartpdt__details {
-  span {
-    font-size: 17px;
-    color: #000;
-  }
+   span {
+      font-size: 17px;
+      color: #000;
+   }
 }
 .cx-cancel {
-  background-color: var(--primary-clr) !important;
+   background-color: var(--primary-clr) !important;
 }
 .bi-newflex {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 30px;
+   display: flex;
+   justify-content: flex-end;
+   width: 100%;
+   margin-top: 30px;
 }
 .bi-note {
-  text-align: center;
-  padding: 20px 16px 10px;
-  font-size: 14px;
-  color: #1d0808;
-  span {
-    color: var(--primary-clr);
-  }
+   text-align: center;
+   padding: 20px 16px 10px;
+   font-size: 14px;
+   color: #1d0808;
+   span {
+      color: var(--primary-clr);
+   }
 }
 .cx-shpingcart .cx-ordrsumry__head {
-  text-align: center;
+   text-align: center;
 }
 .bi-radiolbl {
-  color: var(--primary-clr);
-  font-size: 18px;
-  font-weight: 500;
-  font-family: "Boehringer Forward Text Md";
-  label {
-    padding-left: 4px;
-    padding-right: 32px;
-  }
+   color: var(--primary-clr);
+   font-size: 18px;
+   font-weight: 500;
+   font-family: "Boehringer Forward Text Md";
+   label {
+      padding-left: 4px;
+      padding-right: 32px;
+   }
 }
 .bi-vn-radiolbl {
-  label {
-    padding-bottom: 5px;
-    padding-right: 10px;
-    padding-left: 6px;
-  }
+   label {
+      padding-bottom: 5px;
+      padding-right: 10px;
+      padding-left: 6px;
+   }
 }
 .cx-ordrsumry__item {
-  input[type="radio"] {
-    accent-color: #12a912;
-  }
+   input[type="radio"] {
+      accent-color: #12a912;
+   }
 }
 input[type="text"] {
-  accent-color: #12a912;
+   accent-color: #12a912;
 }
 
 @include tablet {
-  .bi-w40 {
-    width: 100%;
-
-    .cx-ordrsumry__btn {
-      font-size: 14px;
-    }
-  }
-  .bi-ordersumrywrap {
-    padding: 16px 12px 35px;
-  }
-
-  .bi-buttons {
-    width: unset;
-
-    .bi-ordrsumry__btn {
+   .bi-w40 {
       width: 100%;
-      white-space: nowrap;
-      padding: 10px;
-      font-size: 14px;
-    }
 
-    .cx-ordrsumry__btn {
-      white-space: nowrap;
-      padding: 10px;
-      font-size: 14px;
-    }
-  }
-  .bi-newflex {
-    flex-direction: column;
-    gap: 14px;
-  }
-  .bi-sbres {
-    justify-content: flex-start !important;
-  }
-  .bi-vn-radiolbl {
-    label {
-      padding-bottom: 5px;
-      padding-right: 4px !important;
-      padding-left: 6px;
-      font-size: 12px;
-    }
-  }
+      .cx-ordrsumry__btn {
+         font-size: 14px;
+      }
+   }
+   .bi-ordersumrywrap {
+      padding: 16px 12px 35px;
+   }
+
+   .bi-buttons {
+      width: unset;
+
+      .bi-ordrsumry__btn {
+         width: 100%;
+         white-space: nowrap;
+         padding: 10px;
+         font-size: 14px;
+      }
+
+      .cx-ordrsumry__btn {
+         white-space: nowrap;
+         padding: 10px;
+         font-size: 14px;
+      }
+   }
+   .bi-newflex {
+      flex-direction: column;
+      gap: 14px;
+   }
+   .bi-sbres {
+      justify-content: flex-start !important;
+   }
+   .bi-vn-radiolbl {
+      label {
+         padding-bottom: 5px;
+         padding-right: 4px !important;
+         padding-left: 6px;
+         font-size: 12px;
+      }
+   }
 }
 
 @include mobile {
-  .bi-binputwrap,
-  .cx-ordrsumry__head {
-    margin-top: 24px;
-  }
-  .bi-sbcopy {
-    padding-right: 0;
-  }
-  .bi-newflex {
-    flex-direction: column;
-  }
-  .bi-buttons,
-  .bi-binputwrap {
-    width: 100%;
-  }
-  .cx-shpcart__outer {
-    overflow: scroll;
-  }
+   .bi-binputwrap,
+   .cx-ordrsumry__head {
+      margin-top: 24px;
+   }
+   .bi-sbcopy {
+      padding-right: 0;
+   }
+   .bi-newflex {
+      flex-direction: column;
+   }
+   .bi-buttons,
+   .bi-binputwrap {
+      width: 100%;
+   }
+   .cx-shpcart__outer {
+      overflow: scroll;
+   }
 }

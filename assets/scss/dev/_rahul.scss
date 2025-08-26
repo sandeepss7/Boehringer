@@ -806,7 +806,8 @@
         .cx-shpcart__outer {
             .cx-shpcartpdt {
                 .cx-shpcartpdt__wrap {
-                    width: 26%;
+                    // width: 26%;
+                    flex: 1;
                 }
             }
         }
