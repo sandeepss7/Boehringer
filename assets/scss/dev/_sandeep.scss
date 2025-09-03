@@ -1834,6 +1834,15 @@
         }
       }
     }
+        .bi-cart__spec {
+      p {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .bi-buttons {
+        width: 51%;
+      }
+    }
   }
 }
 @include tablet {
@@ -1939,6 +1948,12 @@
           width: 44%;
           left: 0px;
         }
+      }
+    }
+    .bi-cart__spec {
+      p {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   }
@@ -2147,6 +2162,12 @@
     }
     .b-price span {
       font-size: 15px;
+    }
+    .bi-cart__spec {
+      p {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   }
 }
