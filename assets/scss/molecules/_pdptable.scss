@@ -32,6 +32,10 @@
             th {
                 border-top: 0;
             }
+
+            strong {
+                display: contents;
+            }
         }
         &__scroll {
             min-width: 200px;

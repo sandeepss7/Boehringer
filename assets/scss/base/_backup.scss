@@ -1319,7 +1319,10 @@
 }
 
 .boehringer .product-box .book-name-and-buy .btn-buy:hover {
-   color: var(--secondary-clr) !important;
+   background-color: var(--fourth-clr) !important;
+    border-color: var(--fourth-clr) !important; 
+    color: var(--primary-clr) !important;
+    transition: all 0.2s 0s ease-in;
 }
 
 .boehringer .book-name-and-buy {
