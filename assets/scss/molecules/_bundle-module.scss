@@ -1,9 +1,9 @@
 .bundle-box {
    border: 1px solid #000;
    border-radius: 10px;
-   background: #f5f5f5;
+   background: #ccc;
    padding: 18px 18px 16px;
-   color: #505254;
+   color: #54565a;
    box-sizing: border-box;
    &__status {
       display: flex;
@@ -42,7 +42,7 @@
    }
 
    &__label {
-      color: #555;
+      color: #54565a;
       margin-left: 25px;
    }
 
