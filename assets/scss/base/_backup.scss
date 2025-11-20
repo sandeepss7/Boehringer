@@ -1320,9 +1320,8 @@
 
 .boehringer .product-box .book-name-and-buy .btn-buy:hover {
    background-color: var(--fourth-clr) !important;
-    border-color: var(--fourth-clr) !important; 
-    color: var(--primary-clr) !important;
-    transition: all 0.2s 0s ease-in;
+   border-color: var(--fourth-clr) !important;
+   color: var(--primary-clr) !important;
 }
 
 .boehringer .book-name-and-buy {
@@ -1334,12 +1333,6 @@
    border-radius: 5px !important;
    border: 2px solid var(--secondary-clr);
    background-color: var(--secondary-clr);
-   color: var(--primary-clr) !important;
-   padding: 8px;
-}
-
-.boehringer .book-name-and-buy .btn-buy:hover {
-   border: 2px solid var(--secondary-clr) !important;
 }
 
 .boehringer .book-name-and-buy ul li {
