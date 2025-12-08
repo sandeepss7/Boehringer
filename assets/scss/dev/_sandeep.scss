@@ -146,7 +146,7 @@
 
    .list-show .hover .product-name {
       font-family: "Boehringer Forward Head";
-      font-size: 14px;
+      font-size: 16px;
       color: var(--primary-clr);
       letter-spacing: 0.7px;
 
@@ -172,9 +172,7 @@
       margin-left: 10px !important;
    }
    .book-name-and-buy .btn-buy {
-      font-family: "Boehringer Forward Head";
       color: var(--primary-clr) !important;
-      text-transform: capitalize;
       font-size: 15px;
       padding: 5px 10px;
       transition: background-color 0.2s, border-color 0.2s;
@@ -1079,7 +1077,6 @@
    .cx-rmb-left {
       color: #000000;
       font-weight: 300;
-      font-size: 16px !important;
       text-align: left;
       textarea {
          border: 1px solid #000000;
@@ -1751,6 +1748,7 @@
 
          span {
             display: inline-flex;
+            font-size: 15px;
          }
       }
       .list-show .hover .product-name {
